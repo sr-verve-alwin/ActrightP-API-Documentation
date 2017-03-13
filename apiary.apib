@@ -140,7 +140,15 @@ Update the password of active user.
         - from: `21` (number) - First record's number,
         - to: `40` (number) - Last record's number,
         - data (array[Organization Public]) - Array of user objects
-            
+
+## Create organization [/organizations]
+
+### Create organization [POST]
++ Attributes (Organization Fillable)
+    
++ Response 201 (application/json)
+    + Attributes (Organization)
+
 # Data Structures
 
 ## User Fillable (object)
@@ -188,13 +196,13 @@ Update the password of active user.
 - twitter_handle: `` (string) - Twitter handle.
 
 ##Organization (object)
-- Include Organization Fillable
 - id: (number) - Internal id.
+- Include Organization Fillable
 - avatar_url: `` (string) - URL to profile avatar.
 - avatar_media_id: (number) - Internal avatar media id.
 
 ##Organization Public (object)
-- Include Organization Fillable
 - id: (number) - Internal id.
+- Include Organization Fillable
 - avatar_url: `` (string) - URL to profile avatar.
 - avatar_media_id: (number) - Internal avatar media id.
