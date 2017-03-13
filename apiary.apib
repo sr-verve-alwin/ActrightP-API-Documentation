@@ -118,6 +118,28 @@ Update the password of active user.
     + Attributes
         + success: `false` (boolean) - Status.
         + message: `Wrong current password.` (string) - Message.
+        
+# Group Organization
+
+## List all organizations [/organizations/{?per_page,page}]
++ Parameters
+    + per_page (number, optional) - Number of records to show per request.
+        - Default: `20`
+    + page (number, optional) - Current page number.
+        - Default: `1`
+
+### List All Organizations [GET]
++ Response 200 (application/json)
+    + Attributes
+        - total: `200` (number) - Total number of records,
+        - per_page: `20` (number) - Number of records per request,
+        - current_page: `2` (number) - Current page number,
+        - last_page: `10` (number) - Last page number,
+        - next_page_url: `/users/?page=3` (string) - Resource URL to access next page,
+        - prev_page_url: `/users/?page=1` (string) - Resource URL to access previous page,
+        - from: `21` (number) - First record's number,
+        - to: `40` (number) - Last record's number,
+        - data (array[Organization Public]) - Array of user objects
             
 # Data Structures
 
@@ -153,3 +175,26 @@ Update the password of active user.
 
 - Include User Public
 - email: `john.doe@petitons.io` (string) - Email id of the user.
+
+##Organization Fillable (object)
+- name: `Organziation name` (string, required) - Name of the organziation.
+- country: `USA` (string, required) - Three letter country code.
+- mission: `` (string) - Mission statement.
+- address_1: `` (string) - Address line 1.
+- address_2: `` (string) - Address line 2.
+- city: `` (string) - City name.
+- zipcode: `` (string) - Zipcode.
+- website: `` (string) - URL to organization's website.
+- twitter_handle: `` (string) - Twitter handle.
+
+##Organization (object)
+- Include Organization Fillable
+- id: (number) - Internal id.
+- avatar_url: `` (string) - URL to profile avatar.
+- avatar_media_id: (number) - Internal avatar media id.
+
+##Organization Public (object)
+- Include Organization Fillable
+- id: (number) - Internal id.
+- avatar_url: `` (string) - URL to profile avatar.
+- avatar_media_id: (number) - Internal avatar media id.
