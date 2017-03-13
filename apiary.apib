@@ -1,0 +1,155 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# Petitions API
+
+Petitions API allows users to create and sign petitions.
+
+# Group User
+
+## List all users [/users/{?per_page,page}]
++ Parameters
+    + per_page (number, optional) - Number of records to show per request.
+        - Default: `20`
+    + page (number, optional) - Current page number.
+        - Default: `1`
+
+### List All Users [GET]
++ Response 200 (application/json)
+    + Attributes
+        - total: `200` (number) - Total number of records,
+        - per_page: `20` (number) - Number of records per request,
+        - current_page: `2` (number) - Current page number,
+        - last_page: `10` (number) - Last page number,
+        - next_page_url: `/users/?page=3` (string) - Resource URL to access next page,
+        - prev_page_url: `/users/?page=1` (string) - Resource URL to access previous page,
+        - from: `21` (number) - First record's number,
+        - to: `40` (number) - Last record's number,
+        - data (array[User Public]) - Array of user objects
+        
+## Search Users [/user/search{filter}{?per_page,page}]
++ Parameters
+    + filter (string, required) - Search string.
+    + per_page (number, optional) - Number of records to show per request.
+        - Default: `20`
+    + page (number, optional) - Current page number.
+        - Default: `1`
+
+### Search Users [GET]
++ Response 200 (application/json)
+    + Attributes
+        - total: `200` (number) - Total number of records,
+        - per_page: `20` (number) - Number of records per request,
+        - current_page: `2` (number) - Current page number,
+        - last_page: `10` (number) - Last page number,
+        - next_page_url: `/users/?page=3` (string) - Resource URL to access next page,
+        - prev_page_url: `/users/?page=1` (string) - Resource URL to access previous page,
+        - from: `21` (number) - First record's number,
+        - to: `40` (number) - Last record's number,
+        - data (array[User Public]) - Array of user objects
+
+## Create a user [/users]
+
+### Create a New User [POST]
+
+You may create a new user.
+
++ Attributes
+    + email: `user@domain.com` (string, required) - Email id.
+    + first_name: `Jane` (string, required) - First name.
+    + last_name: `Doe` (string, required) - Last name.
+    + password: `pass1234` (string, required) - Password.
+    + password_confirmation: `pass1234` (string, required) - Password confirmation.
+    
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /users/2
+
+    + Attributes (User Public)
+        
+## Select a user [/users/{id}]
+
++ Parameters
+    + id: `1` (number, required) - Id of a user.
+
+### Show a user [GET]
+
+Get the details of a user
+
++ Response 200 (application/json)
+    + Attributes (User Public)
+
+## Select active user [/users/me]
+
+### Show details [GET]
+
+Get the details of the active user.
+
++ Response 200 (application/json)
+    + Attributes (User Self)
+
+### Update details [PUT]
+
+Update the details of the active user.
+
++ Attributes (User Fillable)
+    
++ Response 203 (application/json)
+    + Attributes (User Self)
+    
+## Update active user's password [/users/me/password]
+
+### Update password [PUT]
+
+Update the password of active user.
+
+ + Attributes
+    + current_password: `pass1234` (string, required) - Current password.
+    + password: `pass6789` (string, required) - New password.
+    + password_confirmation: `pass6789` (string, required) - Password confirmation.
+
+ + Response 200 (application/json)
+    + Attributes
+        + success: `true` (boolean) - Status.
+        + message: `Password changed` (string) - Message.
+ + Response 400 (application/json)
+    + Attributes
+        + success: `false` (boolean) - Status.
+        + message: `Wrong current password.` (string) - Message.
+            
+# Data Structures
+
+## User Fillable (object)
+
+- first_name: `John` (string, required) - Firstname of the user.
+- last_name: `Doex` (string, required) - Lastname of the user.
+- phone: `9446387282` (string) - Phone number.
+- about_me: `Lorum ipsum` (string) - Description of user.
+- address_1: `1600 Pennsylvania Ave N` (string) - Address line 1.
+- address_2: `Opposite The Whitehouse` (string) - Address line 2.
+- city: `Washington` (string) - City.
+- zipcode: `20500` (number) - Zip/Postal code.
+- country_code: `USA` (string) - Country code.
+- facebook_handle: `johndoe` (string) - The facebook handle of this user.
+- twitter_handle: `@johndoe` (string) - The twotter handle of this user.
+- locale: `en-US` (string) - Locale.
+- timzone: `UTC` (string) - Timezone.
+- avatar_media_id: `234` (number) - An internal id to the user's profile image resource.
+
+## User Public (object)
+
+- id: `2` (number, required) - The unique ID of the user.
+- Include User Fillable
+- created_at: `2015-01-07T14:03:43Z` (string, required) - ISO8601 date and time of when the user was created.
+- updated_at: `2015-01-07T14:03:43Z` (string, required) - ISO8601 date and time of when the user was updated.
+- last_seen_at: `2015-01-07T14:03:43Z` (string) - ISO8601 date and time of when the user was last active.
+- verfied_at: `2015-01-07T14:03:43Z` (string) - ISO8601 date and time of when this user's email was verified.
+- avatar_url: `http://api.petitions.io/images/hst352gs673.jpg` (string) - URL to the user's profile image if he has any.
+- avatar_media_id: `234` (number) - An internal id to the user's profile image resource.
+
+## User Self (object)
+
+- Include User Public
+- email: `john.doe@petitons.io` (string) - Email id of the user.
