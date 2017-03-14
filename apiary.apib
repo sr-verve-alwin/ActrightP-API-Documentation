@@ -192,7 +192,30 @@ List/search targets accessible by the active user.
     - from: `21` (number) - First record's number,
     - to: `40` (number) - Last record's number,
     - data (array[Target]) - Array of target objects
+    
+## List/search petitions [/users/me/petitions/{?filter,per_page,page}]
++ Parameters
+    + filter: (string, optional) - Search string.
+    + per_page: `20` (number, optional) - Number of records to show per request.
+        - Default: `20`
+    + page: `1` (number, optional) - Current page number.
+        - Default: `1`
+        
+### List/search petitions [GET]
 
+List/search petitions created by the active user 
+
++ Response 200 (application/json)
++ Attributes
+    - total: `200` (number) - Total number of records,
+    - per_page: `20` (number) - Number of records per request,
+    - current_page: `2` (number) - Current page number,
+    - last_page: `10` (number) - Last page number,
+    - next_page_url: `/users/?page=3` (string) - Resource URL to access next page,
+    - prev_page_url: `/users/?page=1` (string) - Resource URL to access previous page,
+    - from: `21` (number) - First record's number,
+    - to: `40` (number) - Last record's number,
+    - data (array[Petition Public]) - Array of target objects
 
 
 # Group Organization
@@ -217,7 +240,7 @@ List/search targets accessible by the active user.
         - to: `40` (number) - Last record's number,
         - data (array[Organization Public]) - Array of user objects
 
-## Search Organizations [/organizations/search{filter}{?per_page,page}]
+## Search Organizations [/organizations/search/{filter}{?per_page,page}]
 + Parameters
     + filter: (string, required) - Search string.
     + per_page: `20` (number, optional) - Number of records to show per request.
@@ -388,6 +411,7 @@ List or search for targets owned by an organization.
 - mission:  (string) - Mission statement.
 - address_1: (string) - Address line 1.
 - address_2: (string) - Address line 2.
+- state: (string) - name of state.
 - city: (string) - City name.
 - zipcode: (string) - Zipcode.
 - website: (string) - URL to organization's website.
@@ -415,6 +439,7 @@ List or search for targets owned by an organization.
 ##Petition Public (object)
 - id: `` (number) - Internal id of the petition.
 - Include Petition Fillable
+- image_url: `` (string) - URL to the image.
 - owner_user_id: `1` (number) - Id of the user who created/owns this petition.
 - created_at: `2015-01-07T14:03:43Z` (string) - ISO8601 date and time of when the petition was created
 - updated_at: `2015-01-07T14:03:43Z` (string) - ISO8601 date and time of when the petition was last updated.
@@ -443,5 +468,6 @@ List or search for targets owned by an organization.
 - id: (number) - Internal id.
 - Include Target Fillable
 - owner_user_id: `` (number) - The id of the user who created/owns this target.
+- avatar_url: `` (string) - URL to the avatar image.
 - created_at: `2015-01-07T14:03:43Z` (string) - ISO8601 date and time of when the target was created
 - updated_at: `2015-01-07T14:03:43Z` (string) - ISO8601 date and time of when the target was last updated.
