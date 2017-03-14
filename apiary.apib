@@ -53,7 +53,7 @@ Petitions API allows users to create and sign petitions.
 ### Create a New User [POST]
 
 You may create a new user.
-
++ Request (application/json)
 + Attributes
     + email: `user@domain.com` (string, required) - Email id.
     + first_name: `Jane` (string, required) - First name.
@@ -88,33 +88,34 @@ Get the details of a user
 Get the details of the active user.
 
 + Response 200 (application/json)
-    + Attributes (User Self)
+    + Attributes (User)
 
 ### Update details [PUT]
 
 Update the details of the active user.
 
++ Request (application/json)
 + Attributes (User Fillable)
     
 + Response 203 (application/json)
-    + Attributes (User Self)
+    + Attributes (User)
     
 ## Update active user's password [/users/me/password]
 
 ### Update password [PUT]
 
 Update the password of active user.
-
- + Attributes
++ Request (application/json)
++ Attributes
     + current_password: `pass1234` (string, required) - Current password.
     + password: `pass6789` (string, required) - New password.
     + password_confirmation: `pass6789` (string, required) - Password confirmation.
 
- + Response 200 (application/json)
++ Response 200 (application/json)
     + Attributes
         + success: `true` (boolean) - Status.
         + message: `Password changed` (string) - Message.
- + Response 400 (application/json)
++ Response 400 (application/json)
     + Attributes
         + success: `false` (boolean) - Status.
         + message: `Wrong current password.` (string) - Message.
@@ -141,14 +142,133 @@ Update the password of active user.
         - to: `40` (number) - Last record's number,
         - data (array[Organization Public]) - Array of user objects
 
+## Search Organizations [/organizations/search{filter}{?per_page,page}]
++ Parameters
+    + filter: (string, required) - Search string.
+    + per_page: `20` (number, optional) - Number of records to show per request.
+        - Default: `20`
+    + page: `1` (number, optional) - Current page number.
+        - Default: `1`
+        
+### Search organizations [GET]
++ Response 200 (application/json)
+    + Attributes
+        - total: `200` (number) - Total number of records,
+        - per_page: `20` (number) - Number of records per request,
+        - current_page: `2` (number) - Current page number,
+        - last_page: `10` (number) - Last page number,
+        - next_page_url: `` (string) - Resource URL to access next page,
+        - prev_page_url: `` (string) - Resource URL to access previous page,
+        - from: `21` (number) - First record's number,
+        - to: `40` (number) - Last record's number,
+        - data (array[Organization Public]) - Array of user objects
+
 ## Create organization [/organizations]
 
 ### Create organization [POST]
++ Request (application/json)
 + Attributes (Organization Fillable)
     
 + Response 201 (application/json)
     + Attributes (Organization)
+    
+## Select an organization [/organizations/{id}]
++ Parameters
+    + id: `1` (number, required) - Id of an organization.
+        
+### Get details [GET]
++ Response 404 (application/json)
++ Response 403 (application/json)
++ Response 200 (application/json)
+    + Attributes (Organization Public)
+    
+### Update details [PUT]
++ Request (application/json)
++ Response 404 (application/json)
++ Response 403 (application/json)
++ Attributes (Organization Fillable)
 
++ Response 200 (application/json)
+    + Attributes (Organization)
+    
+### Delete [DELETE]
++ Response 404 (application/json)
++ Response 403 (application/json)
++ Response 204 (application/json)
+
+## List petitions [/organizations/{id}/petitions/{?per_page,page}]
++ Parameters
+    + id: `1` (number, required) - Id of an organization.
+    + per_page: `20` (number) - Number of items per page.
+        - Default `20`
+    + page: `1` (number) - Number of items per page.
+        - Default `1`
+
+### List petitions [GET]
++ Response 404
++ response 403
++ Response 200 (application/json)
+    + Attributes
+        - total: `200` (number) - Total number of records,
+        - per_page: `20` (number) - Number of records per request,
+        - current_page: `2` (number) - Current page number,
+        - last_page: `10` (number) - Last page number,
+        - next_page_url: `` (string) - Resource URL to access next page,
+        - prev_page_url: `` (string) - Resource URL to access previous page,
+        - from: `21` (number) - First record's number,
+        - to: `40` (number) - Last record's number,
+        - data (array[Petition Public]) - Array of user objects
+
+## List/search members [/organizations/{id}/petitions/{?filter,per_page,page}]
++ Parameters
+    + id: `1` (number, required) - Id of an organization.
+    + filter: `john` (string) - Filter to search against member email.
+        - Default ``
+    + per_page: `20` (number) - Number of items per page.
+        - Default `20`
+    + page: `1` (number) - Number of items per page.
+        - Default `1`
+
+## List/search members [GET]
++ Response 404
++ Response 403
++ Response 200 (application/json)
+    + Attributes
+        - total: `200` (number) - Total number of records,
+        - per_page: `20` (number) - Number of records per request,
+        - current_page: `2` (number) - Current page number,
+        - last_page: `10` (number) - Last page number,
+        - next_page_url: `` (string) - Resource URL to access next page,
+        - prev_page_url: `` (string) - Resource URL to access previous page,
+        - from: `21` (number) - First record's number,
+        - to: `40` (number) - Last record's number,
+        - data (array[User]) - Array of user objects
+
+## List/search targets [/organizations/{id}/targets/{?filter,per_page,page}]
++ Parameters
+    + id: `1` (number, required) - Id of an organization.
+    + filter: `john` (string) - Filter to search against name.
+        - Default ``
+    + per_page: `20` (number) - Number of items per page.
+        - Default `20`
+    + page: `1` (number) - Number of items per page.
+        - Default `1`
+
+## List/search targets [GET]
++ Response 404
++ Response 403
++ Response 200 (application/json)
+    + Attributes
+        - total: `200` (number) - Total number of records,
+        - per_page: `20` (number) - Number of records per request,
+        - current_page: `2` (number) - Current page number,
+        - last_page: `10` (number) - Last page number,
+        - next_page_url: `` (string) - Resource URL to access next page,
+        - prev_page_url: `` (string) - Resource URL to access previous page,
+        - from: `21` (number) - First record's number,
+        - to: `40` (number) - Last record's number,
+        - data (array[Target]) - Array of target objects    
+        
 # Data Structures
 
 ## User Fillable (object)
@@ -179,7 +299,7 @@ Update the password of active user.
 - avatar_url: `http://api.petitions.io/images/hst352gs673.jpg` (string) - URL to the user's profile image if he has any.
 - avatar_media_id: `234` (number) - An internal id to the user's profile image resource.
 
-## User Self (object)
+## User (object)
 
 - Include User Public
 - email: `john.doe@petitons.io` (string) - Email id of the user.
@@ -187,12 +307,12 @@ Update the password of active user.
 ##Organization Fillable (object)
 - name: `Organziation name` (string, required) - Name of the organziation.
 - country_code: `USA` (string, required) - Three letter country code.
-- mission: `` (string) - Mission statement.
-- address_1: `` (string) - Address line 1.
-- address_2: `` (string) - Address line 2.
-- city: `` (string) - City name.
-- zipcode: `` (string) - Zipcode.
-- website: `` (string) - URL to organization's website.
+- mission:  (string) - Mission statement.
+- address_1: (string) - Address line 1.
+- address_2: (string) - Address line 2.
+- city: (string) - City name.
+- zipcode: (string) - Zipcode.
+- website: (string) - URL to organization's website.
 - twitter_handle: `` (string) - Twitter handle.
 
 ##Organization (object)
@@ -206,3 +326,44 @@ Update the password of active user.
 - Include Organization Fillable
 - avatar_url: `` (string) - URL to profile avatar.
 - avatar_media_id: (number) - Internal avatar media id.
+
+##Petition Fillable (object)
+- title: `Petition title` (string, required) - Title of the petition.
+- description: `Description` (string) - Description about the petition.
+- owner_organization_id: `null` (number) - Id of the organization, if this is an organizational petition
+- video_url: `https://youtube.com/<link>` (string) - A video url.
+- image_media_id: `null` (number) - Internal id of the media image object.
+
+##Petition Public (object)
+- id: `` (number) - Internal id of the petition.
+- Include Petition Fillable
+- owner_user_id: `1` (number) - Id of the user who created/owns this petition.
+- created_at: `2015-01-07T14:03:43Z` (string) - ISO8601 date and time of when the petition was created
+- updated_at: `2015-01-07T14:03:43Z` (string) - ISO8601 date and time of when the petition was last updated.
+- published_at: `2015-01-07T14:03:43Z` (string) - ISO8601 date and time of when the petition was published.
+
+##Petition (object)
+- Include Petition Public
+- status: draft (enum, default) - The status of the petition.
+    - draft (string)
+    - published (string)
+    
+##Target Fillable (object)
+- name: (string, required) - Name of target.
+- type: other(enum, default) - Type of target.
+    - government (string)
+    - organization (string)
+    - company (string)
+    - other (string)
+- country_code: `USA` (string) - Three letter country code.
+- state: `` (string) - State.
+- city: `` (string) - City.
+- avatar_media_id: `null` (number) - Internal id to avatar media object.
+- owner_organization_id: `null` (number) - Id of the organization who owns this resource. 
+
+##Target (object)
+- id: (number) - Internal id.
+- Include Target Fillable
+- owner_user_id: `` (number) - The id of the user who created/owns this target.
+- created_at: `2015-01-07T14:03:43Z` (string) - ISO8601 date and time of when the target was created
+- updated_at: `2015-01-07T14:03:43Z` (string) - ISO8601 date and time of when the target was last updated.
