@@ -411,6 +411,30 @@ List or search for targets owned by an organization.
     + Attributes
         + message: `Petition deleted` (string) - Message from server.
         
+## Signatures [/petition/{id}/signatures]
+
++ Parameters
+    + per_page: `20` (number) - How many records to fetch
+    + page: `1` (number) - Current page number
+    + start_date: `null` (string) - Start date
+    + end_date: `null` (string) - End dat
+
+### List/search signatures [GET]
+
+List or search signatures recived for a petition.
+
++ Response 200 (application/json)
+    + Attributes
+        - total: `200` (number) - Total number of records,
+        - per_page: `20` (number) - Number of records per request,
+        - current_page: `2` (number) - Current page number,
+        - last_page: `10` (number) - Last page number,
+        - next_page_url: `` (string) - Resource URL to access next page,
+        - prev_page_url: `` (string) - Resource URL to access previous page,
+        - from: `21` (number) - First record's number,
+        - to: `40` (number) - Last record's number,
+        - data (array[Signature]) - Array of target objects  
+        
 # Data Structures
 
 ## User Fillable (object)
@@ -512,3 +536,26 @@ List or search for targets owned by an organization.
 - avatar_url: `` (string) - URL to the avatar image.
 - created_at: `2015-01-07T14:03:43Z` (string) - ISO8601 date and time of when the target was created
 - updated_at: `2015-01-07T14:03:43Z` (string) - ISO8601 date and time of when the target was last updated.
+
+##Signature Fillable (object)
+- email: (string, required) - The email of the signer.
+- is_visible: `false` (boolean, required) - Is this signature visible to the public.
+- first_name: `` (string) - First name of the signer.
+- last_name: `` (string) - last name of the signer.
+- comment: `` (string) - Comment.
+- address_1: `` (string) - Address line 1.
+- address_2: `` (string) - Address line 2.
+- city: `` (string) - City.
+- state: `` (string) - State.
+- country_code: `USA` (string) - Three letter country code.
+- zipcode: `` (string) - Zip code.
+- locale: `en-US` (string) - Locale.
+- timezone: `UTC` (string) - Timezone.
+- source_ip: `` (string) - Source IP of signature.
+- source_url: `` (string) - Source url.
+
+##Signature (object)
+- id: (number) - Internal id of this signature object.
+- Include Signature Fillable
+- created_at `2015-01-07T14:03:43Z` (string) - ISO8601 date and time of when the target was created.
+- updated_at `2015-01-07T14:03:43Z` (string) - ISO8601 date and time of when the target was created.
