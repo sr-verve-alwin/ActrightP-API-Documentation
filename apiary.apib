@@ -411,13 +411,13 @@ List or search for targets owned by an organization.
     + Attributes
         + message: `Petition deleted` (string) - Message from server.
         
-## Signatures [/petition/{id}/signatures{?per_page,page,start_date}]
+## Signatures [/petition/{id}/signatures{?per_page,page,start_date,end_date}]
 
 + Parameters
-    + per_page: `20` (number) - How many records to fetch
-    + page: `1` (number) - Current page number
-    + start_date: `null` (string) - Start date
-    + end_date: `null` (string) - End dat
+    + per_page: `20` (number, optional) - How many records to fetch
+    + page: `1` (number, optional) - Current page number
+    + start_date: `null` (string, optional) - Start date
+    + end_date: `null` (string, optional) - End dat
 
 ### List/search signatures [GET]
 
