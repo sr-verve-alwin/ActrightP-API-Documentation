@@ -27,7 +27,7 @@ Petitions API allows users to create and sign petitions.
         - to: `40` (number) - Last record's number,
         - data (array[User Public]) - Array of user objects
         
-## Search Users [/user/search{?filter,per_page,page}]
+## Search Users [/user/search{filter}{?per_page,page}]
 + Parameters
     + filter (string, required) - Search string.
     + per_page (number, optional) - Number of records to show per request.
@@ -372,12 +372,44 @@ List or search for targets owned by an organization.
         
 # Group Petition
 
-## Create  [/users{?per_page,page}]
+## Create  [/petitions]
+
+### Create a new petition [POST]
++ Request (application/json)
++ Attributes (Petition Fillable)
+
++ Response 403
++ Response 201 (application/json)
+    + Attributes (Petition)
+    
+## Select  [/petitions/{id}]
+
 + Parameters
-    + per_page (number, optional) - Number of records to show per request.
-        - Default: `20`
-    + page (number, optional) - Current page number.
-        - Default: `1`
+    + id: (number, required) - The id of the petition.
+
+### Show details of a petition [GET]
++ Response 404
++ Response 403
++ Response 200 (application/json)
+    + Attributes (Petition)
+    
+### Update a petition [PUT]
++ Request (application/json)
++ Attributes (Petition Fillable)
+
++ Response 404
++ Response 403
++ Response 200 (application/json)
+    + Attributes (Petition)
+    
+### Delete a petition [DELETE]
++ Response 404
++ Response 403
+    + Attributes
+        + message: `Error message` (string) - Error Message from server.
++ Response 203 (application/json)
+    + Attributes
+        + message: `Petition deleted` (string) - Message from server.
         
 # Data Structures
 
