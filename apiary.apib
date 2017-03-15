@@ -313,7 +313,7 @@ List the petitions created by this organization.
         - to: `40` (number) - Last record's number,
         - data (array[Petition Public]) - Array of user objects
 
-## List/search members [/organizations/{id}/petitions{?filter,per_page,page}]
+## Members [/organizations/{id}/petitions{?filter,per_page,page}]
 + Parameters
     + id: `1` (number, required) - Id of an organization.
     + filter: `john` (string) - Filter to search against member email.
@@ -340,8 +340,28 @@ List or search for members in an organization.
         - from: `21` (number) - First record's number,
         - to: `40` (number) - Last record's number,
         - data (array[User]) - Array of user objects
+        
+## Add member [/organizations/{id}/members]
 
-## List/search targets [/organizations/{id}/targets{?filter,per_page,page}]
+## Add a new member [GET]
+
+Add a new member to an organization.
++ Request (application/json)
+    + Attributes
+        + user (enum) - User id or email.
+            - `1` (number) - User Id
+            - `john.doe@example.com (string) - User's email.
++ Response 404 (application/json)
+    + Attributes
+        + message: `Oraganization or user not found` (string) - Error message from the server.
++ Response 403 (application/json)
+    + Attributes
+        + messages: `Unauthorized access` (string) - Error message from the server.
++ Response 201 (application/json)
+    + Attributes
+        + message: `New member added` (string) - Success message from the server.
+
+## Targets [/organizations/{id}/targets{?filter,per_page,page}]
 
 + Parameters
     + id: `1` (number, required) - Id of an organization.
@@ -368,8 +388,9 @@ List or search for targets owned by an organization.
         - prev_page_url: `` (string) - Resource URL to access previous page,
         - from: `21` (number) - First record's number,
         - to: `40` (number) - Last record's number,
-        - data (array[Target]) - Array of target objects  
-        
+        - data (array[Target]) - Array of target objects
+
+
 # Group Petition
 
 ## Create  [/petitions]
