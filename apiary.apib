@@ -54,12 +54,12 @@ Petitions API allows users to create and sign petitions.
 
 You may create a new user.
 + Request (application/json)
-+ Attributes
-    + email: `user@domain.com` (string, required) - Email id.
-    + first_name: `Jane` (string, required) - First name.
-    + last_name: `Doe` (string, required) - Last name.
-    + password: `pass1234` (string, required) - Password.
-    + password_confirmation: `pass1234` (string, required) - Password confirmation.
+    + Attributes
+        + email: `user@domain.com` (string, required) - Email id.
+        + first_name: `Jane` (string, required) - First name.
+        + last_name: `Doe` (string, required) - Last name.
+        + password: `pass1234` (string, required) - Password.
+        + password_confirmation: `pass1234` (string, required) - Password confirmation.
     
 + Response 201 (application/json)
 
@@ -107,10 +107,10 @@ Update the details of the active user.
 Update the password of active user.
 
 + Request (application/json)
-+ Attributes
-    + current_password: `pass1234` (string, required) - Current password.
-    + password: `pass6789` (string, required) - New password.
-    + password_confirmation: `pass6789` (string, required) - Password confirmation.
+    + Attributes
+        + current_password: `pass1234` (string, required) - Current password.
+        + password: `pass6789` (string, required) - New password.
+        + password_confirmation: `pass6789` (string, required) - Password confirmation.
 
 + Response 200 (application/json)
     + Attributes
@@ -134,16 +134,16 @@ Update the password of active user.
 List or search organizations created by the active user.
 
 + Response 200 (application/json)
-+ Attributes
-    - total: `200` (number) - Total number of records,
-    - per_page: `20` (number) - Number of records per request,
-    - current_page: `2` (number) - Current page number,
-    - last_page: `10` (number) - Last page number,
-    - next_page_url: `/users/?page=3` (string) - Resource URL to access next page,
-    - prev_page_url: `/users/?page=1` (string) - Resource URL to access previous page,
-    - from: `21` (number) - First record's number,
-    - to: `40` (number) - Last record's number,
-    - data (array[Organization Public]) - Array of organization objects
+    + Attributes
+        - total: `200` (number) - Total number of records,
+        - per_page: `20` (number) - Number of records per request,
+        - current_page: `2` (number) - Current page number,
+        - last_page: `10` (number) - Last page number,
+        - next_page_url: `/users/?page=3` (string) - Resource URL to access next page,
+        - prev_page_url: `/users/?page=1` (string) - Resource URL to access previous page,
+        - from: `21` (number) - First record's number,
+        - to: `40` (number) - Last record's number,
+        - data (array[Organization Public]) - Array of organization objects
     
 ## List/search memberships [/users/me/memberships{?filter,per_page,page}]
 + Parameters
@@ -158,16 +158,16 @@ List or search organizations created by the active user.
 List or search organizations in which the active user has membership.
 
 + Response 200 (application/json)
-+ Attributes
-    - total: `200` (number) - Total number of records,
-    - per_page: `20` (number) - Number of records per request,
-    - current_page: `2` (number) - Current page number,
-    - last_page: `10` (number) - Last page number,
-    - next_page_url: `/users/?page=3` (string) - Resource URL to access next page,
-    - prev_page_url: `/users/?page=1` (string) - Resource URL to access previous page,
-    - from: `21` (number) - First record's number,
-    - to: `40` (number) - Last record's number,
-    - data (array[Organization Public]) - Array of organization objects
+    + Attributes
+        - total: `200` (number) - Total number of records,
+        - per_page: `20` (number) - Number of records per request,
+        - current_page: `2` (number) - Current page number,
+        - last_page: `10` (number) - Last page number,
+        - next_page_url: `/users/?page=3` (string) - Resource URL to access next page,
+        - prev_page_url: `/users/?page=1` (string) - Resource URL to access previous page,
+        - from: `21` (number) - First record's number,
+        - to: `40` (number) - Last record's number,
+        - data (array[Organization Public]) - Array of organization objects
 
 ## List/search targets [/users/me/targets{?filter,per_page,page}]
 + Parameters
@@ -182,16 +182,16 @@ List or search organizations in which the active user has membership.
 List/search targets accessible by the active user.
 
 + Response 200 (application/json)
-+ Attributes
-    - total: `200` (number) - Total number of records,
-    - per_page: `20` (number) - Number of records per request,
-    - current_page: `2` (number) - Current page number,
-    - last_page: `10` (number) - Last page number,
-    - next_page_url: `/users/?page=3` (string) - Resource URL to access next page,
-    - prev_page_url: `/users/?page=1` (string) - Resource URL to access previous page,
-    - from: `21` (number) - First record's number,
-    - to: `40` (number) - Last record's number,
-    - data (array[Target]) - Array of target objects
+    + Attributes
+        - total: `200` (number) - Total number of records,
+        - per_page: `20` (number) - Number of records per request,
+        - current_page: `2` (number) - Current page number,
+        - last_page: `10` (number) - Last page number,
+        - next_page_url: `/users/?page=3` (string) - Resource URL to access next page,
+        - prev_page_url: `/users/?page=1` (string) - Resource URL to access previous page,
+        - from: `21` (number) - First record's number,
+        - to: `40` (number) - Last record's number,
+        - data (array[Target]) - Array of target objects
     
 ## List/search petitions [/users/me/petitions{?filter,per_page,page}]
 + Parameters
@@ -206,16 +206,16 @@ List/search targets accessible by the active user.
 List/search petitions created by the active user 
 
 + Response 200 (application/json)
-+ Attributes
-    - total: `200` (number) - Total number of records,
-    - per_page: `20` (number) - Number of records per request,
-    - current_page: `2` (number) - Current page number,
-    - last_page: `10` (number) - Last page number,
-    - next_page_url: `/users/?page=3` (string) - Resource URL to access next page,
-    - prev_page_url: `/users/?page=1` (string) - Resource URL to access previous page,
-    - from: `21` (number) - First record's number,
-    - to: `40` (number) - Last record's number,
-    - data (array[Petition Public]) - Array of target objects
+    + Attributes
+        - total: `200` (number) - Total number of records,
+        - per_page: `20` (number) - Number of records per request,
+        - current_page: `2` (number) - Current page number,
+        - last_page: `10` (number) - Last page number,
+        - next_page_url: `/users/?page=3` (string) - Resource URL to access next page,
+        - prev_page_url: `/users/?page=1` (string) - Resource URL to access previous page,
+        - from: `21` (number) - First record's number,
+        - to: `40` (number) - Last record's number,
+        - data (array[Petition Public]) - Array of target objects
 
 
 # Group Organization
@@ -265,7 +265,7 @@ List/search petitions created by the active user
 
 ### Create organization [POST]
 + Request (application/json)
-+ Attributes (Organization Fillable)
+    + Attributes (Organization Fillable)
     
 + Response 201 (application/json)
     + Attributes (Organization)
@@ -284,7 +284,7 @@ List/search petitions created by the active user
 + Request (application/json)
 + Response 404 (application/json)
 + Response 403 (application/json)
-+ Attributes (Organization Fillable)
+    + Attributes (Organization Fillable)
 
 + Response 200 (application/json)
     + Attributes (Organization)
@@ -300,7 +300,7 @@ List/search petitions created by the active user
 ### List petitions [GET]
 List the petitions created by this organization.
 + Response 404
-+ response 403
++ Response 403
 + Response 200 (application/json)
     + Attributes
         - total: `200` (number) - Total number of records,
@@ -376,7 +376,7 @@ List or search for targets owned by an organization.
 
 ### Create a new petition [POST]
 + Request (application/json)
-+ Attributes (Petition Fillable)
+    + Attributes (Petition Fillable)
 
 + Response 403
 + Response 201 (application/json)
@@ -395,7 +395,7 @@ List or search for targets owned by an organization.
     
 ### Update a petition [PUT]
 + Request (application/json)
-+ Attributes (Petition Fillable)
+    + Attributes (Petition Fillable)
 
 + Response 404
 + Response 403
@@ -458,10 +458,10 @@ List or search signatures recived for a petition.
 ### Create a signature [POST]
 
 + Request (application/json)
-+ Attributes (Signature Fillable)
+    + Attributes (Signature Fillable)
 
 + Response 201 (application/json)
-+ Attributes (Signature)
+    + Attributes (Signature)
         
 # Data Structures
 
