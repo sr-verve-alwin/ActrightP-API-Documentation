@@ -323,7 +323,7 @@ List the petitions created by this organization.
     + page: `1` (number) - Number of items per page.
         - Default `1`
 
-## List/search members [GET]
+### List/search members [GET]
 
 List or search for members in an organization.
 
@@ -343,7 +343,7 @@ List or search for members in an organization.
         
 ## Add member [/organizations/{id}/members]
 
-## Add a new member [GET]
+### Add a new member [GET]
 
 Add a new member to an organization.
 + Request (application/json)
@@ -367,7 +367,7 @@ Add a new member to an organization.
     + organziation_id: (number, required) - Id of the organization.
     + user_id: (number, required) - Id of the user who is a member of the organization.
 
-## View details [GET]
+### View details [GET]
 
 View details of a certain member.
 
@@ -383,7 +383,7 @@ View details of a certain member.
         + user: (User) - The user.
         + roles: (array[Role]) -  Roles assigend to this user under this organization.
 
-## Delete [DELET]
+### Delete [DELET]
 
 Delete a member.
 
