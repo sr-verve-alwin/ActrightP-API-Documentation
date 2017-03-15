@@ -433,7 +433,35 @@ List or search signatures recived for a petition.
         - prev_page_url: `` (string) - Resource URL to access previous page,
         - from: `21` (number) - First record's number,
         - to: `40` (number) - Last record's number,
-        - data (array[Signature]) - Array of target objects  
+        - data (array[Signature]) - Array of target objects
+        
+## Targets [/petition/{id}/targets]
+
+## List petition targets [GET]
+
++ Response 200 (application/json)
+    + Attributes
+        - total: `200` (number) - Total number of records,
+        - per_page: `20` (number) - Number of records per request,
+        - current_page: `2` (number) - Current page number,
+        - last_page: `10` (number) - Last page number,
+        - next_page_url: `` (string) - Resource URL to access next page,
+        - prev_page_url: `` (string) - Resource URL to access previous page,
+        - from: `21` (number) - First record's number,
+        - to: `40` (number) - Last record's number,
+        - data (array[Target]) - Array of target objects
+
+#Group Signature
+
+## Create [/signatures]
+
+### Create a signature [POST]
+
++ Request (application/json)
++ Attributes (Signature Fillable)
+
++ Response 201 (application/json)
++ Attributes (Signature)
         
 # Data Structures
 
