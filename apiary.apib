@@ -346,6 +346,7 @@ List or search for members in an organization.
 ### Add a new member [GET]
 
 Add a new member to an organization.
+
 + Request (application/json)
     + Attributes
         + user (enum,required) - User id or email.
@@ -363,8 +364,9 @@ Add a new member to an organization.
         + message: `New member added` (string) - Success message from the server.
         
 ## Select a member [/organizations/{organization_id}/members/{user_id}]
+
 + Parameters
-    + organziation_id: (number, required) - Id of the organization.
+    + organization_id: (number, required) - Id of the organization.
     + user_id: (number, required) - Id of the user who is a member of the organization.
 
 ### View details [GET]
@@ -383,7 +385,7 @@ View details of a certain member.
         + user: (User) - The user.
         + roles: (array[Role]) -  Roles assigend to this user under this organization.
 
-### Delete [DELET]
+### Delete [DELETE]
 
 Delete a member.
 
