@@ -383,12 +383,13 @@ Petitions API allows users to create and sign petitions.
 + Response 201 (application/json)
     + Attributes (Role)
 
-## Resources []
+## Resources [/organizations/{id}]
++ Parameters
+    + id: `1` (number, required) - Id of an organization.
 
 ### List/Search Targets [GET /organizations/{id}/targets{?filter,per_page,page}]
 
 + Parameters
-    + id: `1` (number, required) - Id of an organization.
     + filter: `john` (string) - Filter to search against name.
         - Default ``
     + per_page: `20` (number) - Number of items per page.
@@ -408,11 +409,10 @@ Petitions API allows users to create and sign petitions.
         - from: `21` (number) - First record's number,
         - to: `40` (number) - Last record's number,
         - data (array[Target]) - Array of target objects
-        
+
 ### List/Search Petitions [/organizations/{id}/petitions{?filter,per_page,page}]
 
 + Parameters
-    + id: `1` (number, required) - Id of an organization.
     + filter: `john` (string) - Filter to search against name.
         - Default ``
     + per_page: `20` (number) - Number of items per page.
