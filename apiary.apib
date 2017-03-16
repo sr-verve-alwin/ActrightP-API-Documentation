@@ -110,7 +110,7 @@ Petitions API allows users to create and sign petitions.
     + Attributes
         - success: `false` (boolean) - Status,
         - message: `Wrong current password.` (string) - Message
-        
+
 ### List/search created organizations [GET /users/me/organizations{?filter,per_page,page}]
 
 + Parameters
@@ -131,7 +131,7 @@ Petitions API allows users to create and sign petitions.
         - from: `21` (number) - First record's number,
         - to: `40` (number) - Last record's number,
         - data (array[Organization Public]) - Array of organization objects
-    
+
 ### List/search memberships [GET /users/me/memberships{?filter,per_page,page}]
 
 + Parameters
@@ -153,7 +153,7 @@ Petitions API allows users to create and sign petitions.
         - to: `40` (number) - Last record's number,
         - data (array[Organization Public]) - Array of organization objects
 
-### List/Search Accessible Targets [GET users/me/targets{?filter,per_page,page}]
+### List/Search Accessbile Targets [GET /users/me/targets{?filter,per_page,page}]
 
 + Parameters
     + filter: (string, optional) - Search string.
@@ -173,7 +173,7 @@ Petitions API allows users to create and sign petitions.
         - from: `21` (number) - First record's number,
         - to: `40` (number) - Last record's number,
         - data (array[Target]) - Array of target objects
-    
+
 ### List/Search Created Petitions [GET /users/me/petitions{?filter,per_page,page}]
 
 + Parameters
