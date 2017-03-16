@@ -391,11 +391,11 @@ Petitions API allows users to create and sign petitions.
 ### List/Search Targets [GET /organizations/{id}/targets{?filter,per_page,page}]
 
 + Parameters
-    + filter: `john` (string) - Filter to search against name.
+    + filter: `john` (string, optional) - Filter to search against name.
         - Default ``
-    + per_page: `20` (number) - Number of items per page.
+    + per_page: `20` (number, optional) - Number of items per page.
         - Default `20`
-    + page: `1` (number) - Number of items per page.
+    + page: `1` (number, optional) - Number of items per page.
         - Default `1`
 + Response 404
 + Response 403
@@ -414,11 +414,11 @@ Petitions API allows users to create and sign petitions.
 ### List/Search Petitions [GET /organizations/{id}/petitions{?filter,per_page,page}]
 
 + Parameters
-    + filter: `john` (string) - Filter to search against name.
+    + filter: `john` (string, optional) - Filter to search against name.
         - Default ``
-    + per_page: `20` (number) - Number of items per page.
+    + per_page: `20` (number, optional) - Number of items per page.
         - Default `20`
-    + page: `1` (number) - Number of items per page.
+    + page: `1` (number, optional) - Number of items per page.
         - Default `1`
 
 + Response 404
