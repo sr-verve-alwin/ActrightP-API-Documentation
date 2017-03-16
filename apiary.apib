@@ -383,7 +383,9 @@ Petitions API allows users to create and sign petitions.
 + Response 201 (application/json)
     + Attributes (Role)
 
-## Targets [/organizations/{id}/targets{?filter,per_page,page}]
+## Resources []
+
+### List/Search Targets [GET /organizations/{id}/targets{?filter,per_page,page}]
 
 + Parameters
     + id: `1` (number, required) - Id of an organization.
@@ -393,9 +395,6 @@ Petitions API allows users to create and sign petitions.
         - Default `20`
     + page: `1` (number) - Number of items per page.
         - Default `1`
-
-### List/search owned targets [GET]
-
 + Response 404
 + Response 403
 + Response 200 (application/json)
@@ -410,7 +409,7 @@ Petitions API allows users to create and sign petitions.
         - to: `40` (number) - Last record's number,
         - data (array[Target]) - Array of target objects
         
-## Petitions [/organizations/{id}/petitions{?filter,per_page,page}]
+### List/Search Petitions [/organizations/{id}/petitions{?filter,per_page,page}]
 
 + Parameters
     + id: `1` (number, required) - Id of an organization.
@@ -420,8 +419,6 @@ Petitions API allows users to create and sign petitions.
         - Default `20`
     + page: `1` (number) - Number of items per page.
         - Default `1`
-
-### List/search owned petitions [GET]
 
 + Response 404
 + Response 403
