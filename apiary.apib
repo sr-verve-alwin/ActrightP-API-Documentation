@@ -7,14 +7,15 @@ Petitions API allows users to create and sign petitions.
 
 # Group User
 
-## List all users [/users{?per_page,page}]
+## List all users [/users]
+
+### List All Users [GET {?per_page,page}]
 + Parameters
     + per_page (number, optional) - Number of records to show per request.
         - Default: `20`
     + page (number, optional) - Current page number.
         - Default: `1`
-
-### List All Users [GET]
+        
 + Response 200 (application/json)
     + Attributes
         - total: `200` (number) - Total number of records,
@@ -27,7 +28,7 @@ Petitions API allows users to create and sign petitions.
         - to: `40` (number) - Last record's number,
         - data (array[User Public]) - Array of user objects
         
-## Search Users [/user/search{filter}{?per_page,page}]
+### Search Users [GET /search{filter}{?per_page,page}]
 + Parameters
     + filter (string, required) - Search string.
     + per_page (number, optional) - Number of records to show per request.
@@ -35,7 +36,6 @@ Petitions API allows users to create and sign petitions.
     + page (number, optional) - Current page number.
         - Default: `1`
 
-### Search Users [GET]
 + Response 200 (application/json)
     + Attributes
         - total: `200` (number) - Total number of records,
