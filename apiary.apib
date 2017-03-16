@@ -11,8 +11,6 @@ Petitions API allows users to create and sign petitions.
 
 ### List All Users [GET /users{?per_page,page}]
 
-List all users.
-
 + Parameters
     + per_page (number, optional) - Number of records to show per request.
         - Default: `20`
@@ -32,8 +30,6 @@ List all users.
         - data (array[User Public]) - Array of user objects
         
 ### Search Users [GET /users/search{?filter,per_page,page}]
-
-Search for a user based his first and last names.
 
 + Parameters
     + filter (string, required) - Search string.
@@ -56,7 +52,6 @@ Search for a user based his first and last names.
 
 ### Create a New User [POST]
 
-You may create a new user.
 + Request (application/json)
     + Attributes
         - email: `user@domain.com` (string, required) - Email id.
@@ -80,8 +75,6 @@ You may create a new user.
 
 ### Show details [GET]
 
-Get the details of a user
-
 + Response 200 (application/json)
     + Attributes (User Public)
 
@@ -89,14 +82,10 @@ Get the details of a user
 
 ### Show details [GET]
 
-Get the details of the active user.
-
 + Response 200 (application/json)
     + Attributes (User)
 
 ### Update details [PUT]
-
-Update the details of the active user.
 
 + Request (application/json)
 + Attributes (User Fillable)
@@ -105,8 +94,6 @@ Update the details of the active user.
     + Attributes (User)
 
 ### Update password [PUT /users/me/password]
-
-Update the password of active user.
 
 + Request (application/json)
     + Attributes
@@ -124,9 +111,7 @@ Update the password of active user.
         - success: `false` (boolean) - Status,
         - message: `Wrong current password.` (string) - Message
         
-### List/search organizations [GET /users/me/organizations{?filter,per_page,page}]
-
-List or search organizations created by the active user.
+### List/search created organizations [GET /users/me/organizations{?filter,per_page,page}]
 
 + Parameters
     + filter: (string, optional) - Search string.
@@ -149,8 +134,6 @@ List or search organizations created by the active user.
     
 ### List/search memberships [GET /users/me/memberships{?filter,per_page,page}]
 
-List or search organizations in which the active user has membership.
-
 + Parameters
     + filter: (string, optional) - Search string.
     + per_page: `20` (number, optional) - Number of records to show per request.
@@ -170,9 +153,7 @@ List or search organizations in which the active user has membership.
         - to: `40` (number) - Last record's number,
         - data (array[Organization Public]) - Array of organization objects
 
-### List/search targets [GET users/me/targets{?filter,per_page,page}]
-
-List/search targets accessible by the active user.
+### List/Search Accessible Targets [GET users/me/targets{?filter,per_page,page}]
 
 + Parameters
     + filter: (string, optional) - Search string.
@@ -193,9 +174,7 @@ List/search targets accessible by the active user.
         - to: `40` (number) - Last record's number,
         - data (array[Target]) - Array of target objects
     
-### List/search petitions [GET /users/me/petitions{?filter,per_page,page}]
-
-List/search petitions created by the active user 
+### List/Search Created Petitions [GET /users/me/petitions{?filter,per_page,page}]
 
 + Parameters
     + filter: (string, optional) - Search string.
@@ -219,14 +198,16 @@ List/search petitions created by the active user
 
 # Group Organization
 
-## List all organizations [/organizations{?per_page,page}]
+## List/Search/Create organizations [/organizations]
+
+### List all organizations [GET /organizations{?per_page,page}]
+
 + Parameters
     + per_page (number, optional) - Number of records to show per request.
         - Default: `20`
     + page (number, optional) - Current page number.
         - Default: `1`
-
-### List All Organizations [GET]
+        
 + Response 200 (application/json)
     + Attributes
         - total: `200` (number) - Total number of records,
@@ -239,7 +220,7 @@ List/search petitions created by the active user
         - to: `40` (number) - Last record's number,
         - data (array[Organization Public]) - Array of user objects
 
-## Search Organizations [/organizations/search{?filter,per_page,page}]
+### Search Organizations [GET /organizations/search{?filter,per_page,page}]
 + Parameters
     + filter: (string, required) - Search string.
     + per_page: `20` (number, optional) - Number of records to show per request.
@@ -247,7 +228,6 @@ List/search petitions created by the active user
     + page: `1` (number, optional) - Current page number.
         - Default: `1`
         
-### Search organizations [GET]
 + Response 200 (application/json)
     + Attributes
         - total: `200` (number) - Total number of records,
@@ -260,16 +240,15 @@ List/search petitions created by the active user
         - to: `40` (number) - Last record's number,
         - data (array[Organization Public]) - Array of user objects
 
-## Create organization [/organizations]
-
 ### Create organization [POST]
+
 + Request (application/json)
     + Attributes (Organization Fillable)
     
 + Response 201 (application/json)
     + Attributes (Organization)
     
-## Select an organization [/organizations/{id}]
+## Specific Organization [/organizations/{id}]
 + Parameters
     + id: `1` (number, required) - Id of an organization.
         
@@ -288,7 +267,7 @@ List/search petitions created by the active user
 + Response 200 (application/json)
     + Attributes (Organization)
     
-## List petitions [/organizations/{id}/petitions{?per_page,page}]
+### List created petitions [GET /organizations/{id}/petitions{?per_page,page}]
 + Parameters
     + id: `1` (number, required) - Id of an organization.
     + per_page: `20` (number) - Number of items per page.
@@ -296,8 +275,6 @@ List/search petitions created by the active user
     + page: `1` (number) - Number of items per page.
         - Default `1`
 
-### List petitions [GET]
-List the petitions created by this organization.
 + Response 404
 + Response 403
 + Response 200 (application/json)
@@ -311,8 +288,14 @@ List the petitions created by this organization.
         - from: `21` (number) - First record's number,
         - to: `40` (number) - Last record's number,
         - data (array[Petition Public]) - Array of user objects
+        
+## Manage Members [/organizations/{id}/members]
 
-## Members [/organizations/{id}/petitions{?filter,per_page,page}]
++ Parameters
+    + id: `1` (number, required) - Id of an organization.
+
+### List/Search Members [GET /organizations/{id}/petitions{?filter,per_page,page}]
+
 + Parameters
     + id: `1` (number, required) - Id of an organization.
     + filter: `john` (string) - Filter to search against member email.
@@ -321,10 +304,6 @@ List the petitions created by this organization.
         - Default `20`
     + page: `1` (number) - Number of items per page.
         - Default `1`
-
-### List/search members [GET]
-
-List or search for members in an organization.
 
 + Response 404
 + Response 403
@@ -339,12 +318,14 @@ List or search for members in an organization.
         - from: `21` (number) - First record's number,
         - to: `40` (number) - Last record's number,
         - data (array[Member]) - Array of user objects
+
++ Parameters
+    - id: `1` (number) - Id of the organization.
         
-## Add member [/organizations/{id}/members]
+### Add a member [POST /organizations/{id}/members]
 
-### Add a new member [POST]
-
-Add a new member to an organization.
++ Parameters
+    - id: `1` (number) - Id of the organization.
 
 + Request (application/json)
     + Attributes
