@@ -360,6 +360,29 @@ Petitions API allows users to create and sign petitions.
 
 + Response 203 (application/json)
 
+## Manage Organizational Roles [/organizations/{id}/roles]
+
++ Parameters
+    + id: `1` (number, required) - Id of an organization.
+    
+### List all roles [GET]
+
++ Response 200 (application/json)
+    + Attributes
+        - total: `10` (number) - Total number of records,
+        - data (array[Role]) - Array of roles
+
+### Create a role [POST]
+
++ Request (application/json)
+    + Attributes
+        + name: `Staff` (string, required) - Name of the role.
+        + description: `A role for staff` (string) - Description for the role.
+        + permissions: `[1, 2, 3]` (array[number]) - Ids of permissions to be attched to this role.
+    
++ Response 201 (application/json)
+    + Attributes (Role)
+
 ## Targets [/organizations/{id}/targets{?filter,per_page,page}]
 
 + Parameters
@@ -371,9 +394,7 @@ Petitions API allows users to create and sign petitions.
     + page: `1` (number) - Number of items per page.
         - Default `1`
 
-### List/search targets [GET]
-
-List or search for targets owned by an organization.
+### List/search owned targets [GET]
 
 + Response 404
 + Response 403
@@ -388,31 +409,33 @@ List or search for targets owned by an organization.
         - from: `21` (number) - First record's number,
         - to: `40` (number) - Last record's number,
         - data (array[Target]) - Array of target objects
-
-## Roles [/organizations/{id}/roles]
+        
+## Petitions [/organizations/{id}/petitions{?filter,per_page,page}]
 
 + Parameters
     + id: `1` (number, required) - Id of an organization.
-    
-### List all roles [GET]
+    + filter: `john` (string) - Filter to search against name.
+        - Default ``
+    + per_page: `20` (number) - Number of items per page.
+        - Default `20`
+    + page: `1` (number) - Number of items per page.
+        - Default `1`
 
-List all roles within an organziation.
+### List/search owned petitions [GET]
 
++ Response 404
++ Response 403
 + Response 200 (application/json)
     + Attributes
-        - total: `10` (number) - Total number of records,
-        - data (array[Role]) - Array of roles
-
-### Create a role. [POST]
-
-+ Request (application/json)
-    + Attributes
-        + name: `Staff` (string, required) - Name of the role.
-        + description: `A role for staff` (string) - Description for the role.
-        + permissions: `[1, 2, 3]` (array[number]) - Ids of permissions to be attched to this role.
-    
-+ Response 201 (application/json)
-    + Attributes (Role)
+        - total: `200` (number) - Total number of records,
+        - per_page: `20` (number) - Number of records per request,
+        - current_page: `2` (number) - Current page number,
+        - last_page: `10` (number) - Last page number,
+        - next_page_url: `` (string) - Resource URL to access next page,
+        - prev_page_url: `` (string) - Resource URL to access previous page,
+        - from: `21` (number) - First record's number,
+        - to: `40` (number) - Last record's number,
+        - data (array[Petition]) - Array of target objects
 
 # Group Petition
 
