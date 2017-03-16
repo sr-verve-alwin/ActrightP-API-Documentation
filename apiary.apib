@@ -318,13 +318,7 @@ Petitions API allows users to create and sign petitions.
         - to: `40` (number) - Last record's number,
         - data (array[Member]) - Array of user objects
 
-+ Parameters
-    - id: `1` (number) - Id of the organization.
-        
 ### Add a member [POST /organizations/{id}/members]
-
-+ Parameters
-    - id: `1` (number) - Id of the organization.
 
 + Request (application/json)
     + Attributes
@@ -342,15 +336,13 @@ Petitions API allows users to create and sign petitions.
     + Attributes
         + message: `New member added` (string) - Success message from the server.
         
-## Select a member [/organizations/{organization_id}/members/{user_id}]
+## Manage a member [/organizations/{organization_id}/members/{user_id}]
 
 + Parameters
     + organization_id: (number, required) - Id of the organization.
     + user_id: (number, required) - Id of the user who is a member of the organization.
 
-### View details [GET]
-
-View details of a certain member.
+### View details of a member [GET]
 
 + Response 404 (application/json)
     + Attributes
@@ -364,9 +356,7 @@ View details of a certain member.
         + user: (User) - The user.
         + roles: (array[Role]) -  Roles assigend to this user under this organization.
 
-### Delete [DELETE]
-
-Delete a member.
+### Delete a member[DELETE]
 
 + Response 203 (application/json)
 
