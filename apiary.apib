@@ -9,7 +9,7 @@ Petitions API allows users to create and sign petitions.
 
 ## Manage users [/users]
 
-### List All Users [GET {?per_page,page}]
+### List All Users [GET /users{?per_page,page}]
 
 List all users.
 
@@ -31,7 +31,7 @@ List all users.
         - to: `40` (number) - Last record's number,
         - data (array[User Public]) - Array of user objects
         
-### Search Users [GET /search{?filter,per_page,page}]
+### Search Users [GET /users/search{?filter,per_page,page}]
 
 Search for a user based his first and last names.
 
@@ -54,18 +54,16 @@ Search for a user based his first and last names.
         - to: `40` (number) - Last record's number,
         - data (array[User Public]) - Array of user objects
 
-## Create a user [/users]
-
 ### Create a New User [POST]
 
 You may create a new user.
 + Request (application/json)
     + Attributes
-        + email: `user@domain.com` (string, required) - Email id.
-        + first_name: `Jane` (string, required) - First name.
-        + last_name: `Doe` (string, required) - Last name.
-        + password: `pass1234` (string, required) - Password.
-        + password_confirmation: `pass1234` (string, required) - Password confirmation.
+        - email: `user@domain.com` (string, required) - Email id.
+        - first_name: `Jane` (string, required) - First name.
+        - last_name: `Doe` (string, required) - Last name.
+        - password: `pass1234` (string, required) - Password.
+        - password_confirmation: `pass1234` (string, required) - Password confirmation.
     
 + Response 201 (application/json)
 
@@ -75,7 +73,7 @@ You may create a new user.
 
     + Attributes (User Public)
         
-## Manage a specfic user [/users/{id}]
+## Specfic user [/users/{id}]
 
 + Parameters
     + id: `1` (number, required) - Id of a user.
@@ -106,26 +104,27 @@ Update the details of the active user.
 + Response 203 (application/json)
     + Attributes (User)
 
-### Update password [PUT password]
+### Update password [PUT /users/me/password]
 
 Update the password of active user.
 
 + Request (application/json)
     + Attributes
-        + current_password: `pass1234` (string, required) - Current password.
-        + password: `pass6789` (string, required) - New password.
-        + password_confirmation: `pass6789` (string, required) - Password confirmation.
+        - current_password: `pass1234` (string, required) - Current password,
+        - password: `pass6789` (string, required) - New password,
+        - password_confirmation: `pass6789` (string, required) - Password confirmation
 
 + Response 200 (application/json)
     + Attributes
-        + success: `true` (boolean) - Status.
-        + message: `Password changed` (string) - Message.
+        - success: `true` (boolean) - Status,
+        - message: `Password changed` (string) - Message
+        
 + Response 400 (application/json)
     + Attributes
-        + success: `false` (boolean) - Status.
-        + message: `Wrong current password.` (string) - Message.
+        - success: `false` (boolean) - Status,
+        - message: `Wrong current password.` (string) - Message
         
-### List/search organizations [GET organizations{?filter,per_page,page}]
+### List/search organizations [GET /users/me/organizations{?filter,per_page,page}]
 
 List or search organizations created by the active user.
 
@@ -148,7 +147,7 @@ List or search organizations created by the active user.
         - to: `40` (number) - Last record's number,
         - data (array[Organization Public]) - Array of organization objects
     
-### List/search memberships [GET memberships{?filter,per_page,page}]
+### List/search memberships [GET /users/me/memberships{?filter,per_page,page}]
 
 List or search organizations in which the active user has membership.
 
@@ -171,7 +170,7 @@ List or search organizations in which the active user has membership.
         - to: `40` (number) - Last record's number,
         - data (array[Organization Public]) - Array of organization objects
 
-### List/search targets [GET targets{?filter,per_page,page}]
+### List/search targets [GET users/me/targets{?filter,per_page,page}]
 
 List/search targets accessible by the active user.
 
@@ -194,7 +193,7 @@ List/search targets accessible by the active user.
         - to: `40` (number) - Last record's number,
         - data (array[Target]) - Array of target objects
     
-### List/search petitions [GET petitions{?filter,per_page,page}]
+### List/search petitions [GET /users/me/petitions{?filter,per_page,page}]
 
 List/search petitions created by the active user 
 
