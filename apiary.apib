@@ -339,7 +339,7 @@ List or search for members in an organization.
         - prev_page_url: `` (string) - Resource URL to access previous page,
         - from: `21` (number) - First record's number,
         - to: `40` (number) - Last record's number,
-        - data (array[User]) - Array of user objects
+        - data (array[Member]) - Array of user objects
         
 ## Add member [/organizations/{id}/members]
 
@@ -549,6 +549,12 @@ List or search signatures recived for a petition.
 - Include User Public
 - email: `john.doe@petitons.io` (string) - Email id of the user.
 
+## Member (object)
+
+- Include User Public
+- roles: (array[Role]) - Roles assigedn to this member.
+
+
 ##Organization Fillable (object)
 - name: `Organziation name` (string, required) - Name of the organziation.
 - country_code: `USA` (string, required) - Three letter country code.
@@ -636,11 +642,22 @@ List or search signatures recived for a petition.
 ##Signature (object)
 - id: (number) - Internal id of this signature object.
 - Include Signature Fillable
-- created_at: `2015-01-07T14:03:43Z` (string) - ISO8601 date and time of when the target was created.
-- updated_at: `2015-01-07T14:03:43Z` (string) - ISO8601 date and time of when the target was created.
+- created_at: `2015-01-07T14:03:43Z` (string) - ISO8601 date and time of when this object was created.
+- updated_at: `2015-01-07T14:03:43Z` (string) - ISO8601 date and time of when this object was last updated.
 
-##Role (object)
+##Role Public (object)
 - id: (number) - Internal id.
 - name: (string) - Name.
 - description: (string) - Description.
 - organization_id: (number) - The id of the organization who owns this role (null if system role)
+
+##Role (object)
+- Include Role Public
+- created_at: `2015-01-07T14:03:43Z` (string) - ISO8601 date and time of when this object was created.
+- updated_at: `2015-01-07T14:03:43Z` (string) - ISO8601 date and time of when this object was last updated.
+
+##Permission (object)
+- id: `2` (number) - Internal id.
+- name: `petitions.create` (string) - Name.
+- title: `Create petition` (string) - Descriptive title.
+- description: `Allows the creation of petitions in an organization.
