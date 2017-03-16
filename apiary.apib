@@ -402,7 +402,7 @@ Delete a member.
     + page: `1` (number) - Number of items per page.
         - Default `1`
 
-## List/search targets [GET]
+### List/search targets [GET]
 
 List or search for targets owned by an organization.
 
@@ -420,6 +420,30 @@ List or search for targets owned by an organization.
         - to: `40` (number) - Last record's number,
         - data (array[Target]) - Array of target objects
 
+## Roles [/organizations/{id}/roles]
+
++ Parameters
+    + id: `1` (number, required) - Id of an organization.
+    
+### List all roles [GET]
+
+List all roles within an organziation.
+
++ Response 200 (application/json)
+    + Attributes
+        - total: `10` (number) - Total number of records,
+        - data (array[Role]) - Array of roles
+
+### Create a role. [POST]
+
++ Request (application/json)
+    + Attributes
+        + name: `Staff` (string, required) - Name of the role.
+        + description: `A role for staff` (string) - Description for the role.
+        + permissions: `[1, 2, 3]` (array[number]) - Ids of permissions to be attched to this role.
+    
++ Response 201 (application/json)
+    + Attributes (Role)
 
 # Group Petition
 
@@ -552,7 +576,7 @@ List or search signatures recived for a petition.
 ## Member (object)
 
 - Include User Public
-- roles: (array[Role]) - Roles assigedn to this member.
+- roles: (array[Role Public]) - Roles assigedn to this member.
 
 
 ##Organization Fillable (object)
@@ -648,8 +672,9 @@ List or search signatures recived for a petition.
 ##Role Public (object)
 - id: (number) - Internal id.
 - name: (string) - Name.
+- permissions: (array[Permission]) - Permissions attached to this role.
 - description: (string) - Description.
-- organization_id: (number) - The id of the organization who owns this role (null if system role)
+- organization_id: (number) - The id of the organization who owns this role (null if system role).
 
 ##Role (object)
 - Include Role Public
