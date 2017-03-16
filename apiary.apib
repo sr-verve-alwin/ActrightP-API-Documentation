@@ -356,6 +356,41 @@ Petitions API allows users to create and sign petitions.
         + user: (User) - The user.
         + roles: (array[Role]) -  Roles assigend to this user under this organization.
 
+### List assigned roles [GET /organizations/{organization_id}/members/{user_id}/roles]
+
++ Response 200 (application/json)
+    + Attributes
+        - total: `2` (number) - Number of records,
+        - data: (array[Role]) - Roles assigned
+
+### Assign role(s) [POST /organizations/{organization_id}/members/{user_id}/roles]
+
++ Request (application/json)
+    + Attributes
+        - roles: [1, 2] (array[number]) - An array of one or more role ids to be assigned.
++ Response 201 (application/json)
+    + Attributes
+        - message: `Roles added` (string) - Success message form server.
+        - data: (array[Role]) - Roles that were assigned.
+
+### Remove role(s) [DELETE /organizations/{organization_id}/members/{user_id}/roles]
++ Request (application/json)
+    + Attributes
+        - roles: [1, 2] (array[number]) - An array of one or more role ids to be removed.
++ Response 204 (application/json)
+    + Attributes
+        - message: `Roles removed` (string) - Success message form server.
+        - data: (array[Role]) - Roles that were removed.
+
+### Set roles(s) [PUT /organizations/{organization_id}/members/{user_id}/roles]
++ Request (application/json)
+    + Attributes
+        - roles: [1, 2] (array[number]) - An array of one or more role ids to be removed.
++ Response 200 (application/json)
+    + Attributes
+        - message: `Roles removed` (string) - Success message form server.
+        - data: (array[Role]) - Present roles.
+
 ### Delete a member[DELETE]
 
 + Response 203 (application/json)
