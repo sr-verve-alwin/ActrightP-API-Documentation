@@ -556,33 +556,37 @@ List or search signatures recived for a petition.
 ## Create/Update/Delete Targets [/targets]
 
 ### Create a target [POST]
+
 + Request (application/json)
     + Attributes (Target Fillable)
     
-+ Response 201
++ Response 201 (application/json)
     + Attributes (Target)
 
 ### View Details of a target [GET /targets/{target_id}]
+
 + Parameters
     + target_id: `1` (number) - The id of the target
     
-+ Response 200
++ Response 200 (application/json)
     +Attributes (Target)
 
 ### Update a target [PUT /targets/{target_id}]
+
 + Parameters
     + target_id: `1` (number) - The id of the target
-+ Request
++ Request (application/json)
     + Attributes (Target Fillable)
     
-+ Response 200
++ Response 200 (application/json)
     + Attributes (Target)
 
 ### Delete a target [DELETE /targets/{target_id}]
+
 + Parameters
     + target_id: `1` (number) - The id of the target
     
-+ Response 203
++ Response 203 (application/json)
     + Attributes
         - message: `Target deleted` (string) - Success message from server.
 
