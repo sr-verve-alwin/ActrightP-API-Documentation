@@ -354,7 +354,7 @@ Petitions API allows users to create and sign petitions.
     + Attributes
         + organization: (Organization) - The organization.
         + user: (User) - The user.
-        + roles: (array[Role]) -  Roles assigend to this user under this organization.
+        + roles: (array[Role Compact]) -  Roles assigend to this user under this organization.
 
 ### List assigned roles [GET /organizations/{organization_id}/members/{user_id}/roles]
 
@@ -551,6 +551,41 @@ List or search signatures recived for a petition.
         - to: `40` (number) - Last record's number,
         - data (array[Target]) - Array of target objects
 
+#Group Target
+
+## Create/Update/Delete Targets [/targets]
+
+### Create a target [POST]
++ Request (application/json)
+    + Attributes (Target Fillable)
+    
++ Response 201
+    + Attributes (Target)
+
+### View Details of a target [GET /targets/{target_id}]
++ Parameters
+    + target_id: `1` (number) - The id of the target
+    
++ Response 200
+    +Attributes (Target)
+
+### Update a target [PUT /targets/{target_id}]
++ Parameters
+    + target_id: `1` (number) - The id of the target
++ Request
+    + Attributes (Target Fillable)
+    
++ Response 200
+    + Attributes (Target)
+
+### Delete a target [DELETE /targets/{target_id}]
++ Parameters
+    + target_id: `1` (number) - The id of the target
+    
++ Response 203
+    + Attributes
+        - message: `Target deleted` (string) - Success message from server.
+
 #Group Signature
 
 ## Create [/signatures]
@@ -601,7 +636,7 @@ List or search signatures recived for a petition.
 ## Member (object)
 
 - Include User Public
-- roles: (array[Role Public]) - Roles assigedn to this member.
+- roles: (array[Role Compact]) - Roles assigedn to this member.
 
 
 ##Organization Fillable (object)
@@ -649,7 +684,7 @@ List or search signatures recived for a petition.
 - status: draft (enum, default) - The status of the petition.
     - draft (string)
     - published (string)
-    
+
 ##Target Fillable (object)
 - name: (string, required) - Name of target.
 - type: other(enum, default) - Type of target.
@@ -694,12 +729,16 @@ List or search signatures recived for a petition.
 - created_at: `2015-01-07T14:03:43Z` (string) - ISO8601 date and time of when this object was created.
 - updated_at: `2015-01-07T14:03:43Z` (string) - ISO8601 date and time of when this object was last updated.
 
-##Role Public (object)
+##Role Compact (object)
 - id: (number) - Internal id.
 - name: (string) - Name.
 - permissions: (array[Permission]) - Permissions attached to this role.
 - description: (string) - Description.
 - organization_id: (number) - The id of the organization who owns this role (null if system role).
+
+##Role Public (object)
+- Include Role Compact
+- permissions: (array[Permission]) - Permissions attached to this role.
 
 ##Role (object)
 - Include Role Public
