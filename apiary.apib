@@ -153,7 +153,28 @@ Petitions API allows users to create and sign petitions.
         - to: `40` (number) - Last record's number,
         - data (array[Organization Public]) - Array of organization objects
 
-### List/Search Accessbile Targets [GET /users/me/targets{?filter,per_page,page}]
+### List/Search Accessbile Targets [GET /users/me/accessible-targets{?filter,per_page,page}]
+
++ Parameters
+    + filter: (string, optional) - Search string.
+    + per_page: `20` (number, optional) - Number of records to show per request.
+        - Default: `20`
+    + page: `1` (number, optional) - Current page number.
+        - Default: `1`
+
++ Response 200 (application/json)
+    + Attributes
+        - total: `200` (number) - Total number of records,
+        - per_page: `20` (number) - Number of records per request,
+        - current_page: `2` (number) - Current page number,
+        - last_page: `10` (number) - Last page number,
+        - next_page_url: `/users/?page=3` (string) - Resource URL to access next page,
+        - prev_page_url: `/users/?page=1` (string) - Resource URL to access previous page,
+        - from: `21` (number) - First record's number,
+        - to: `40` (number) - Last record's number,
+        - data (array[Target]) - Array of target objects
+
+### List/Search Created Targets [GET /users/me/targets{?filter,per_page,page}]
 
 + Parameters
     + filter: (string, optional) - Search string.
@@ -267,9 +288,10 @@ Petitions API allows users to create and sign petitions.
 + Response 200 (application/json)
     + Attributes (Organization)
     
-### List created petitions [GET /organizations/{id}/petitions{?per_page,page}]
+### List/search created petitions [GET /organizations/{id}/petitions{?filter,per_page,page}]
 + Parameters
     + id: `1` (number, required) - Id of an organization.
+    + filter: `` (string) - Filter string.
     + per_page: `20` (number) - Number of items per page.
         - Default `20`
     + page: `1` (number) - Number of items per page.
@@ -287,14 +309,37 @@ Petitions API allows users to create and sign petitions.
         - prev_page_url: `` (string) - Resource URL to access previous page,
         - from: `21` (number) - First record's number,
         - to: `40` (number) - Last record's number,
-        - data (array[Petition Public]) - Array of user objects
+        - data (array[Petition Public]) - Array of petition objects
+        
+### List/search created targets [GET /organizations/{id}/targets{?filter,per_page,page}]
++ Parameters
+    + id: `1` (number, required) - Id of an organization.
+    + filter: `` (string) - Filter string.
+    + per_page: `20` (number) - Number of items per page.
+        - Default `20`
+    + page: `1` (number) - Number of items per page.
+        - Default `1`
+
++ Response 404
++ Response 403
++ Response 200 (application/json)
+    + Attributes
+        - total: `200` (number) - Total number of records,
+        - per_page: `20` (number) - Number of records per request,
+        - current_page: `2` (number) - Current page number,
+        - last_page: `10` (number) - Last page number,
+        - next_page_url: `` (string) - Resource URL to access next page,
+        - prev_page_url: `` (string) - Resource URL to access previous page,
+        - from: `21` (number) - First record's number,
+        - to: `40` (number) - Last record's number,
+        - data (array[Target]) - Array of target objects
         
 ## Manage Members [/organizations/{id}/members]
 
 + Parameters
     + id: `1` (number, required) - Id of an organization.
 
-### List/Search Members [GET /organizations/{id}/petitions{?filter,per_page,page}]
+### List/Search Members [GET /organizations/{id}/members{?filter,per_page,page}]
 
 + Parameters
     + filter: `john` (string) - Filter to search against member email.
@@ -537,7 +582,7 @@ List or search signatures recived for a petition.
         
 ## Targets [/petition/{id}/targets]
 
-## List petition targets [GET]
+### List petition targets [GET]
 
 + Response 200 (application/json)
     + Attributes
@@ -550,6 +595,24 @@ List or search signatures recived for a petition.
         - from: `21` (number) - First record's number,
         - to: `40` (number) - Last record's number,
         - data (array[Target]) - Array of target objects
+
+### Add targets(s) to petition [POST]
++ Request (application/json)
+    + Attributes
+        - targets: [2,3] (array[number], required) - Ids of targets to attach
+        
++ Response 201 (application/json)
+    + Attributes
+        - message: `Targets added` (string) - Success message from server,
+        - data: (array[Target]) - Array of targets that were attched
+
+### Remove target(s) from petition [DELETE]
++ Request (application/json)
+    + Attributes
+        - targets: [2,3] (array[number], required) - Ids of targets to dettach.
++ Response 203 (application/json)
+    + Attributes
+        - message: `Targets detached` (string) - Success message from server
 
 #Group Target
 
