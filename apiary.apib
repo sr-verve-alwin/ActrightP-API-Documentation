@@ -17,6 +17,10 @@ Petitions API allows users to create and sign petitions.
     + page (number, optional) - Current page number.
         - Default: `1`
         
++ Response 401 (text/html)
+
+        Unauthorized.
+        
 + Response 200 (application/json)
     + Attributes
         - total: `200` (number) - Total number of records,
@@ -38,9 +42,9 @@ Petitions API allows users to create and sign petitions.
     + page (number, optional) - Current page number.
         - Default: `1`
 
-+ Response 400 (application/text)
-    Unathorized
-        
++ Response 401 (text/html)
+
+        Unauthorized.
 
 + Response 200 (application/json)
     + Attributes
@@ -79,12 +83,20 @@ Petitions API allows users to create and sign petitions.
 
 ### Show details [GET]
 
++ Response 401 (text/html)
+
+        Unauthorized.
+
 + Response 200 (application/json)
     + Attributes (User Public)
 
 ## Active user [/users/me]
 
 ### Show details [GET]
+
++ Response 401 (text/html)
+
+        Unauthorized.
 
 + Response 200 (application/json)
     + Attributes (User)
@@ -93,6 +105,10 @@ Petitions API allows users to create and sign petitions.
 
 + Request (application/json)
 + Attributes (User Fillable)
+
++ Response 401 (text/html)
+
+        Unauthorized.
     
 + Response 203 (application/json)
     + Attributes (User)
@@ -104,6 +120,10 @@ Petitions API allows users to create and sign petitions.
         - current_password: `pass1234` (string, required) - Current password,
         - password: `pass6789` (string, required) - New password,
         - password_confirmation: `pass6789` (string, required) - Password confirmation
+
++ Response 401 (text/html)
+
+        Unauthorized.
 
 + Response 200 (application/json)
     + Attributes
@@ -123,7 +143,11 @@ Petitions API allows users to create and sign petitions.
         - Default: `20`
     + page: `1` (number, optional) - Current page number.
         - Default: `1`
-        
+
++ Response 401 (text/html)
+
+        Unauthorized.
+
 + Response 200 (application/json)
     + Attributes
         - total: `200` (number) - Total number of records,
@@ -144,6 +168,10 @@ Petitions API allows users to create and sign petitions.
         - Default: `20`
     + page: `1` (number, optional) - Current page number.
         - Default: `1`
+
++ Response 401 (text/html)
+
+        Unauthorized.
 
 + Response 200 (application/json)
     + Attributes
@@ -166,6 +194,10 @@ Petitions API allows users to create and sign petitions.
     + page: `1` (number, optional) - Current page number.
         - Default: `1`
 
++ Response 401 (text/html)
+
+        Unauthorized.
+
 + Response 200 (application/json)
     + Attributes
         - total: `200` (number) - Total number of records,
@@ -187,6 +219,10 @@ Petitions API allows users to create and sign petitions.
     + page: `1` (number, optional) - Current page number.
         - Default: `1`
 
++ Response 401 (text/html)
+
+        Unauthorized.
+
 + Response 200 (application/json)
     + Attributes
         - total: `200` (number) - Total number of records,
@@ -207,7 +243,11 @@ Petitions API allows users to create and sign petitions.
         - Default: `20`
     + page: `1` (number, optional) - Current page number.
         - Default: `1`
-        
+
++ Response 401 (text/html)
+
+        Unauthorized.
+
 + Response 200 (application/json)
     + Attributes
         - total: `200` (number) - Total number of records,
@@ -232,7 +272,11 @@ Petitions API allows users to create and sign petitions.
         - Default: `20`
     + page (number, optional) - Current page number.
         - Default: `1`
-        
+
++ Response 401 (text/html)
+
+        Unauthorized.
+
 + Response 200 (application/json)
     + Attributes
         - total: `200` (number) - Total number of records,
@@ -252,7 +296,11 @@ Petitions API allows users to create and sign petitions.
         - Default: `20`
     + page: `1` (number, optional) - Current page number.
         - Default: `1`
-        
+
++ Response 401 (text/html)
+
+        Unauthorized.
+
 + Response 200 (application/json)
     + Attributes
         - total: `200` (number) - Total number of records,
@@ -278,6 +326,10 @@ Petitions API allows users to create and sign petitions.
     + id: `1` (number, required) - Id of an organization.
         
 ### Get details [GET]
++ Response 401 (text/html)
+
+        Unauthorized.
+    
 + Response 404 (application/json)
 + Response 403 (application/json)
 + Response 200 (application/json)
@@ -285,10 +337,14 @@ Petitions API allows users to create and sign petitions.
     
 ### Update details [PUT]
 + Request (application/json)
+
++ Response 401 (text/html)
+
+        Unauthorized.
+        
 + Response 404 (application/json)
 + Response 403 (application/json)
     + Attributes (Organization Fillable)
-
 + Response 200 (application/json)
     + Attributes (Organization)
     
@@ -300,7 +356,11 @@ Petitions API allows users to create and sign petitions.
         - Default `20`
     + page: `1` (number) - Number of items per page.
         - Default `1`
+        
++ Response 401 (text/html)
 
+        Unauthorized.
+        
 + Response 404
 + Response 403
 + Response 200 (application/json)
@@ -323,7 +383,11 @@ Petitions API allows users to create and sign petitions.
         - Default `20`
     + page: `1` (number) - Number of items per page.
         - Default `1`
+        
++ Response 401 (text/html)
 
+        Unauthorized.
+        
 + Response 404
 + Response 403
 + Response 200 (application/json)
@@ -353,6 +417,10 @@ Petitions API allows users to create and sign petitions.
     + page: `1` (number) - Number of items per page.
         - Default `1`
 
++ Response 401 (text/html)
+
+        Unauthorized.
+        
 + Response 404
 + Response 403
 + Response 200 (application/json)
@@ -375,6 +443,11 @@ Petitions API allows users to create and sign petitions.
             - 1034 (number) - User Id
             - john.doe@example.com (string) - User's email.
         + roles (array[number]) - Ids of roles that must be assigend to this member.
+
++ Response 401 (text/html)
+
+        Unauthorized.
+        
 + Response 404 (application/json)
     + Attributes
         + message: `Oraganization or user not found` (string) - Error message from the server.
@@ -393,6 +466,10 @@ Petitions API allows users to create and sign petitions.
 
 ### View details of a member [GET]
 
++ Response 401 (text/html)
+
+        Unauthorized.
+    
 + Response 404 (application/json)
     + Attributes
         + message: `Oraganization or user not found` (string) - Error message from the server.
@@ -407,6 +484,10 @@ Petitions API allows users to create and sign petitions.
 
 ### List assigned roles [GET /organizations/{organization_id}/members/{user_id}/roles]
 
++ Response 401 (text/html)
+
+        Unauthorized.
+        
 + Response 200 (application/json)
     + Attributes
         - total: `2` (number) - Number of records,
@@ -417,6 +498,11 @@ Petitions API allows users to create and sign petitions.
 + Request (application/json)
     + Attributes
         - roles: [1, 2] (array[number]) - An array of one or more role ids to be assigned.
+
++ Response 401 (text/html)
+
+        Unauthorized.
+        
 + Response 201 (application/json)
     + Attributes
         - message: `Roles added` (string) - Success message form server.
@@ -426,6 +512,11 @@ Petitions API allows users to create and sign petitions.
 + Request (application/json)
     + Attributes
         - roles: [1, 2] (array[number]) - An array of one or more role ids to be removed.
+
++ Response 401 (text/html)
+
+        Unauthorized.
+    
 + Response 204 (application/json)
     + Attributes
         - message: `Roles removed` (string) - Success message form server.
@@ -435,6 +526,11 @@ Petitions API allows users to create and sign petitions.
 + Request (application/json)
     + Attributes
         - roles: [1, 2] (array[number]) - An array of one or more role ids to be removed.
+
++ Response 401 (text/html)
+
+        Unauthorized.
+        
 + Response 200 (application/json)
     + Attributes
         - message: `Roles removed` (string) - Success message form server.
@@ -442,6 +538,10 @@ Petitions API allows users to create and sign petitions.
 
 ### Delete a member[DELETE]
 
++ Response 401 (text/html)
+
+        Unauthorized.
+        
 + Response 203 (application/json)
 
 ## Manage Organizational Roles [/organizations/{id}/roles]
@@ -451,6 +551,10 @@ Petitions API allows users to create and sign petitions.
     
 ### List all roles [GET]
 
++ Response 401 (text/html)
+
+        Unauthorized.
+    
 + Response 200 (application/json)
     + Attributes
         - total: `10` (number) - Total number of records,
@@ -463,6 +567,10 @@ Petitions API allows users to create and sign petitions.
         + name: `Staff` (string, required) - Name of the role.
         + description: `A role for staff` (string) - Description for the role.
         + permissions: `[1, 2, 3]` (array[number]) - Ids of permissions to be attched to this role.
+
++ Response 401 (text/html)
+
+        Unauthorized.
     
 + Response 201 (application/json)
     + Attributes (Role)
@@ -481,6 +589,11 @@ Petitions API allows users to create and sign petitions.
         - Default `20`
     + page: `1` (number, optional) - Number of items per page.
         - Default `1`
+        
++ Response 401 (text/html)
+
+        Unauthorized.
+    
 + Response 404
 + Response 403
 + Response 200 (application/json)
@@ -505,6 +618,8 @@ Petitions API allows users to create and sign petitions.
     + page: `1` (number, optional) - Number of items per page.
         - Default `1`
 
++ Response 401 (text/html)
+    Unauthorized.
 + Response 404
 + Response 403
 + Response 200 (application/json)
@@ -527,6 +642,10 @@ Petitions API allows users to create and sign petitions.
 + Request (application/json)
     + Attributes (Petition Fillable)
 
++ Response 401 (text/html)
+
+        Unauthorized.
+    
 + Response 403
 + Response 201 (application/json)
     + Attributes (Petition)
@@ -537,6 +656,11 @@ Petitions API allows users to create and sign petitions.
     + id: (number, required) - The id of the petition.
 
 ### Show details of a petition [GET]
+
++ Response 401 (text/html)
+
+        Unauthorized.
+    
 + Response 404
 + Response 403
 + Response 200 (application/json)
@@ -546,12 +670,21 @@ Petitions API allows users to create and sign petitions.
 + Request (application/json)
     + Attributes (Petition Fillable)
 
++ Response 401 (text/html)
+
+        Unauthorized.
+        
 + Response 404
 + Response 403
 + Response 200 (application/json)
     + Attributes (Petition)
     
 ### Delete a petition [DELETE]
+
++ Response 401 (text/html)
+
+        Unauthorized.
+        
 + Response 404
 + Response 403
     + Attributes
@@ -570,8 +703,12 @@ Petitions API allows users to create and sign petitions.
 
 ### List/search signatures [GET]
 
-List or search signatures recived for a petition.
+List or search signatures received for a petition.
 
++ Response 401 (text/html)
+
+        Unauthorized.
+        
 + Response 200 (application/json)
     + Attributes
         - total: `200` (number) - Total number of records,
@@ -588,6 +725,10 @@ List or search signatures recived for a petition.
 
 ### List petition targets [GET]
 
++ Response 401 (text/html)
+
+        Unauthorized.
+        
 + Response 200 (application/json)
     + Attributes
         - total: `200` (number) - Total number of records,
@@ -604,6 +745,10 @@ List or search signatures recived for a petition.
 + Request (application/json)
     + Attributes
         - targets: [2,3] (array[number], required) - Ids of targets to attach
+
++ Response 401 (text/html)
+
+        Unauthorized.
         
 + Response 201 (application/json)
     + Attributes
@@ -614,6 +759,11 @@ List or search signatures recived for a petition.
 + Request (application/json)
     + Attributes
         - targets: [2,3] (array[number], required) - Ids of targets to dettach.
+        
++ Response 401 (text/html)
+
+    Unauthorized.
+    
 + Response 203 (application/json)
     + Attributes
         - message: `Targets detached` (string) - Success message from server
@@ -627,6 +777,10 @@ List or search signatures recived for a petition.
 + Request (application/json)
     + Attributes (Target Fillable)
     
++ Response 401 (text/html)
+
+        Unauthorized.
+        
 + Response 201 (application/json)
     + Attributes (Target)
 
@@ -634,9 +788,13 @@ List or search signatures recived for a petition.
 
 + Parameters
     + target_id: `1` (number) - The id of the target
-    
+
++ Response 401 (text/html)
+
+        Unauthorized.
+        
 + Response 200 (application/json)
-    +Attributes (Target)
+    + Attributes (Target)
 
 ### Update a target [PUT /targets/{target_id}]
 
@@ -645,6 +803,10 @@ List or search signatures recived for a petition.
 + Request (application/json)
     + Attributes (Target Fillable)
     
++ Response 401 (text/html)
+
+        Unauthorized.
+        
 + Response 200 (application/json)
     + Attributes (Target)
 
@@ -652,7 +814,11 @@ List or search signatures recived for a petition.
 
 + Parameters
     + target_id: `1` (number) - The id of the target
-    
+
++ Response 401 (text/html)
+
+        Unauthorized.
+        
 + Response 203 (application/json)
     + Attributes
         - message: `Target deleted` (string) - Success message from server.
@@ -666,6 +832,10 @@ List or search signatures recived for a petition.
 + Request (application/json)
     + Attributes (Signature Fillable)
 
++ Response 401 (text/html)
+
+        Unauthorized.
+        
 + Response 201 (application/json)
     + Attributes (Signature)
         
