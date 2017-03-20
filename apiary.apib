@@ -144,6 +144,24 @@ Petitions API allows users to create and sign petitions.
 + Response 401 (text/html)
 
         Unauthorized.
+        
++ Response 422 (application/json)
+
+        {
+            "current_password": [
+                "The current password field is required."
+            ],
+            "password": [
+                "The password field is required."
+            ]
+        }
+        
++ Response 409 (application/json)
+
+        {
+            "success": false,
+            "message": "Wrong current password."
+        }
 
 + Response 200 (application/json)
     + Attributes
@@ -338,36 +356,73 @@ Petitions API allows users to create and sign petitions.
 + Request (application/json)
     + Attributes (Organization Fillable)
     
++ Response 401 (text/html)
+
+        Unauthorized.
+    
++ Response 422 (application/json)
+
+        {
+            "name": [
+                "The name field is required."
+            ],
+            "country_code": [
+                "The country code field is required."
+            ]
+        }
+    
 + Response 201 (application/json)
     + Attributes (Organization)
     
 ## Specific Organization [/organizations/{id}]
 + Parameters
     + id: `1` (number, required) - Id of an organization.
-        
+
 ### Get details [GET]
 + Response 401 (text/html)
 
         Unauthorized.
     
 + Response 404 (application/json)
+
+        {
+            "message": "Record not found."
+        }
+        
 + Response 403 (application/json)
 + Response 200 (application/json)
     + Attributes (Organization Public)
-    
+
 ### Update details [PUT]
 + Request (application/json)
 
 + Response 401 (text/html)
 
         Unauthorized.
-        
+
++ Response 422 (application/json)
+
+        {
+            "name": [
+                "The name field is required."
+            ],
+            "country_code": [
+                "The country code field is required."
+            ]
+        }
+
 + Response 404 (application/json)
+
+        {
+            "message": "Record not found."
+        }
+        
 + Response 403 (application/json)
     + Attributes (Organization Fillable)
+    
 + Response 200 (application/json)
     + Attributes (Organization)
-    
+
 ### List/search created petitions [GET /organizations/{id}/petitions{?filter,per_page,page}]
 + Parameters
     + id: `1` (number, required) - Id of an organization.
@@ -381,7 +436,12 @@ Petitions API allows users to create and sign petitions.
 
         Unauthorized.
         
-+ Response 404
++ Response 404 (application/json)
+
+        {
+            "message": "Record not found."
+        }
+        
 + Response 403
 + Response 200 (application/json)
     + Attributes
@@ -394,7 +454,7 @@ Petitions API allows users to create and sign petitions.
         - from: `21` (number) - First record's number,
         - to: `40` (number) - Last record's number,
         - data (array[Petition Public]) - Array of petition objects
-        
+
 ### List/search created targets [GET /organizations/{id}/targets{?filter,per_page,page}]
 + Parameters
     + id: `1` (number, required) - Id of an organization.
@@ -408,7 +468,12 @@ Petitions API allows users to create and sign petitions.
 
         Unauthorized.
         
-+ Response 404
++ Response 404 (application/json)
+
+        {
+            "message": "Record not found."
+        }
+        
 + Response 403
 + Response 200 (application/json)
     + Attributes
@@ -441,7 +506,12 @@ Petitions API allows users to create and sign petitions.
 
         Unauthorized.
         
-+ Response 404
++ Response 404 (application/json)
+
+        {
+            "message": "Record not found."
+        }
+        
 + Response 403
 + Response 200 (application/json)
     + Attributes
@@ -469,8 +539,11 @@ Petitions API allows users to create and sign petitions.
         Unauthorized.
         
 + Response 404 (application/json)
-    + Attributes
-        + message: `Oraganization or user not found` (string) - Error message from the server.
+
+        {
+            "message": "Record not found."
+        }
+        
 + Response 403 (application/json)
     + Attributes
         + messages: `Unauthorized access` (string) - Error message from the server.
@@ -491,8 +564,11 @@ Petitions API allows users to create and sign petitions.
         Unauthorized.
     
 + Response 404 (application/json)
-    + Attributes
-        + message: `Oraganization or user not found` (string) - Error message from the server.
+
+        {
+            "message": "Record not found."
+        }
+        
 + Response 403 (application/json)
     + Attributes
         + messages: `Unauthorized access` (string) - Error message from the server.
@@ -508,6 +584,12 @@ Petitions API allows users to create and sign petitions.
 
         Unauthorized.
         
++ Response 404 (application/json)
+
+        {
+            "message": "Record not found."
+        }
+        
 + Response 200 (application/json)
     + Attributes
         - total: `2` (number) - Number of records,
@@ -522,6 +604,12 @@ Petitions API allows users to create and sign petitions.
 + Response 401 (text/html)
 
         Unauthorized.
+
++ Response 404 (application/json)
+
+        {
+            "message": "Record not found."
+        }
         
 + Response 201 (application/json)
     + Attributes
@@ -536,6 +624,12 @@ Petitions API allows users to create and sign petitions.
 + Response 401 (text/html)
 
         Unauthorized.
+
++ Response 404 (application/json)
+
+        {
+            "message": "Record not found."
+        }
     
 + Response 204 (application/json)
     + Attributes
@@ -551,6 +645,12 @@ Petitions API allows users to create and sign petitions.
 
         Unauthorized.
         
++ Response 404 (application/json)
+
+        {
+            "message": "Record not found."
+        }
+        
 + Response 200 (application/json)
     + Attributes
         - message: `Roles removed` (string) - Success message form server.
@@ -561,6 +661,12 @@ Petitions API allows users to create and sign petitions.
 + Response 401 (text/html)
 
         Unauthorized.
+        
++ Response 404 (application/json)
+
+        {
+            "message": "Record not found."
+        }
         
 + Response 203 (application/json)
 
@@ -574,6 +680,12 @@ Petitions API allows users to create and sign petitions.
 + Response 401 (text/html)
 
         Unauthorized.
+        
++ Response 404 (application/json)
+
+        {
+            "message": "Record not found."
+        }
     
 + Response 200 (application/json)
     + Attributes
@@ -591,6 +703,12 @@ Petitions API allows users to create and sign petitions.
 + Response 401 (text/html)
 
         Unauthorized.
+        
++ Response 404 (application/json)
+
+        {
+            "message": "Record not found."
+        }
     
 + Response 201 (application/json)
     + Attributes (Role)
@@ -614,7 +732,12 @@ Petitions API allows users to create and sign petitions.
 
         Unauthorized.
     
-+ Response 404
++ Response 404 (application/json)
+
+        {
+            "message": "Record not found."
+        }
+        
 + Response 403
 + Response 200 (application/json)
     + Attributes
@@ -642,7 +765,12 @@ Petitions API allows users to create and sign petitions.
 
         Unauthorized.
         
-+ Response 404
++ Response 404 (application/json)
+
+        {
+            "message": "Record not found."
+        }
+        
 + Response 403
 + Response 200 (application/json)
     + Attributes
@@ -683,12 +811,18 @@ Petitions API allows users to create and sign petitions.
 
         Unauthorized.
     
-+ Response 404
++ Response 404 (application/json)
+
+        {
+            "message": "Record not found."
+        }
+        
 + Response 403
 + Response 200 (application/json)
     + Attributes (Petition)
-    
+
 ### Update a petition [PUT]
+
 + Request (application/json)
     + Attributes (Petition Fillable)
 
@@ -696,25 +830,35 @@ Petitions API allows users to create and sign petitions.
 
         Unauthorized.
         
-+ Response 404
++ Response 404 (application/json)
+
+        {
+            "message": "Record not found."
+        }
+        
 + Response 403
 + Response 200 (application/json)
     + Attributes (Petition)
-    
+
 ### Delete a petition [DELETE]
 
 + Response 401 (text/html)
 
         Unauthorized.
         
-+ Response 404
++ Response 404 (application/json)
+
+        {
+            "message": "Record not found."
+        }
+        
 + Response 403
     + Attributes
         + message: `Error message` (string) - Error Message from server.
 + Response 203 (application/json)
     + Attributes
         + message: `Petition deleted` (string) - Message from server.
-        
+
 ## Signatures [/petition/{id}/signatures{?per_page,page,start_date,end_date}]
 
 + Parameters
@@ -742,7 +886,7 @@ List or search signatures received for a petition.
         - from: `21` (number) - First record's number,
         - to: `40` (number) - Last record's number,
         - data (array[Signature]) - Array of target objects
-        
+
 ## Targets [/petition/{id}/targets]
 
 ### List petition targets [GET]
@@ -750,6 +894,12 @@ List or search signatures received for a petition.
 + Response 401 (text/html)
 
         Unauthorized.
+
++ Response 404 (application/json)
+
+        {
+            "message": "Record not found."
+        }
         
 + Response 200 (application/json)
     + Attributes
@@ -771,6 +921,12 @@ List or search signatures received for a petition.
 + Response 401 (text/html)
 
         Unauthorized.
+
++ Response 404 (application/json)
+
+        {
+            "message": "Record not found."
+        }
         
 + Response 201 (application/json)
     + Attributes
@@ -785,6 +941,12 @@ List or search signatures received for a petition.
 + Response 401 (text/html)
 
         Unauthorized.
+
++ Response 404 (application/json)
+
+        {
+            "message": "Record not found."
+        }
     
 + Response 203 (application/json)
     + Attributes
@@ -828,6 +990,12 @@ List or search signatures received for a petition.
 + Response 401 (text/html)
 
         Unauthorized.
+
++ Response 404 (application/json)
+
+        {
+            "message": "Record not found."
+        }
         
 + Response 200 (application/json)
     + Attributes (Target)
@@ -840,6 +1008,12 @@ List or search signatures received for a petition.
 + Response 401 (text/html)
 
         Unauthorized.
+
++ Response 404 (application/json)
+
+        {
+            "message": "Record not found."
+        }
         
 + Response 203 (application/json)
     + Attributes
