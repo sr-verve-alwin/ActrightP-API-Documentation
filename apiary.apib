@@ -639,7 +639,7 @@ Petitions API allows users to create and sign petitions.
 ### Set roles(s) [PUT /organizations/{organization_id}/members/{user_id}/roles]
 + Request (application/json)
     + Attributes
-        - roles: [1, 2] (array[number]) - An array of one or more role ids to be removed.
+        - roles: [1, 2] (array[number]) - An array of one or more role ids to be set.
 
 + Response 401 (text/html)
 
@@ -653,7 +653,7 @@ Petitions API allows users to create and sign petitions.
         
 + Response 200 (application/json)
     + Attributes
-        - message: `Roles removed` (string) - Success message form server.
+        - message: `Roles set` (string) - Success message form server.
         - data: (array[Role]) - Present roles.
 
 ### Delete a member[DELETE]
@@ -674,7 +674,7 @@ Petitions API allows users to create and sign petitions.
 
 + Parameters
     + id: `1` (number, required) - Id of an organization.
-    
+
 ### List all roles [GET]
 
 + Response 401 (text/html)
@@ -696,7 +696,8 @@ Petitions API allows users to create and sign petitions.
 
 + Request (application/json)
     + Attributes
-        + name: `Staff` (string, required) - Name of the role.
+        + name: `staff` (string, required) - Name of the role.
+        + title: `Staff user` (string, required) - Display name of the role.
         + description: `A role for staff` (string) - Description for the role.
         + permissions: `[1, 2, 3]` (array[number]) - Ids of permissions to be attched to this role.
 
@@ -1168,7 +1169,8 @@ List or search signatures received for a petition.
 
 ##Role Compact (object)
 - id: (number) - Internal id.
-- name: (string) - Name.
+- name: (string, required) - Name.
+- title: (string, required) - Display name.
 - permissions: (array[Permission]) - Permissions attached to this role.
 - description: (string) - Description.
 - organization_id: (number) - The id of the organization who owns this role (null if system role).
