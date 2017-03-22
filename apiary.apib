@@ -675,7 +675,24 @@ Petitions API allows users to create and sign petitions.
 + Parameters
     + id: `1` (number, required) - Id of an organization.
 
-### List all roles [GET]
+### List all roles [GET /organizations/{id}/all-roles]
+
++ Response 401 (text/html)
+
+        Unauthorized.
+        
++ Response 404 (application/json)
+
+        {
+            "message": "Record not found."
+        }
+    
++ Response 200 (application/json)
+    + Attributes
+        - total: `10` (number) - Total number of records,
+        - data (array[Role]) - Array of roles
+
+### List own roles [GET /organizations/{id}/own-roles]
 
 + Response 401 (text/html)
 
