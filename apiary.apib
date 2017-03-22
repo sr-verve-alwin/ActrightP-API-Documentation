@@ -670,12 +670,12 @@ Petitions API allows users to create and sign petitions.
         
 + Response 203 (application/json)
 
-## Manage Organizational Roles [/organizations/{id}/roles]
+## Manage Organizational Roles [/organizations/{organization_id}/roles]
 
 + Parameters
-    + id: `1` (number, required) - Id of an organization.
+    + organization_id: `1` (number, required) - Id of an organization.
 
-### List all roles [GET /organizations/{id}/all-roles]
+### List all roles [GET /organizations/{organization_id}/all-roles]
 
 + Response 401 (text/html)
 
@@ -692,7 +692,7 @@ Petitions API allows users to create and sign petitions.
         - total: `10` (number) - Total number of records,
         - data (array[Role]) - Array of roles
 
-### List own roles [GET /organizations/{id}/own-roles]
+### List own roles [GET /organizations/{organization_id}/own-roles]
 
 + Response 401 (text/html)
 
@@ -730,6 +730,63 @@ Petitions API allows users to create and sign petitions.
     
 + Response 201 (application/json)
     + Attributes (Role)
+
+### Update a role [PUT /organizations/{organization_id}/roles/{role_id}]
++ Parameters
+    + role_id: `2` (number, required) - Id of the role
+        
++ Request (application/json)
+    + Attributes (Role Fillable)
+
++ Response 401 (text/html)
+
+        Unauthorized.
+        
++ Response 404 (application/json)
+
+        {
+            "message": "Record not found."
+        }
++ Response 403 (application/json)
+
+        {
+            "message": "Access denied."
+        }
++ Response 422 (application/json)
+
+        {
+            "name": ["The name must be unique"]
+        }
+        
++ Response 200 (application/json)
+    + Attributes (Role)
+
+### Delete a role [DELETE /organizations/{organization_id}/roles/{role_id}]
++ Parameters
+    + role_id: `2` (number, required) - Id of the role
+        
++ Request (application/json)
+    + Attributes (Role Fillable)
+
++ Response 401 (text/html)
+
+        Unauthorized.
+        
++ Response 404 (application/json)
+
+        {
+            "message": "Record not found."
+        }
++ Response 403 (application/json)
+
+        {
+            "message": "Access denied."
+        }
++ Response 203 (application/json)
+
+        {
+            "message": "Role deleted."
+        }
 
 ## Resources [/organizations/{id}/resources]
 
@@ -1184,12 +1241,16 @@ List or search signatures received for a petition.
 - created_at: `2015-01-07T14:03:43Z` (string) - ISO8601 date and time of when this object was created.
 - updated_at: `2015-01-07T14:03:43Z` (string) - ISO8601 date and time of when this object was last updated.
 
-##Role Compact (object)
-- id: (number) - Internal id.
+##Role Fillable (object)
 - name: (string, required) - Name.
 - title: (string, required) - Display name.
 - permissions: (array[Permission]) - Permissions attached to this role.
 - description: (string) - Description.
+
+
+##Role Compact (object)
+- id: (number) - Internal id.
+- Include Role Fillable
 - organization_id: (number) - The id of the organization who owns this role (null if system role).
 
 ##Role Public (object)
