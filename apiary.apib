@@ -712,11 +712,7 @@ Petitions API allows users to create and sign petitions.
 ### Create a role [POST]
 
 + Request (application/json)
-    + Attributes
-        + name: `staff` (string, required) - Name of the role.
-        + title: `Staff user` (string, required) - Display name of the role.
-        + description: `A role for staff` (string) - Description for the role.
-        + permissions: `[1, 2, 3]` (array[number]) - Ids of permissions to be attched to this role.
+    + Attributes (Role Fillable)
 
 + Response 401 (text/html)
 
@@ -1244,13 +1240,13 @@ List or search signatures received for a petition.
 ##Role Fillable (object)
 - name: (string, required) - Name.
 - title: (string, required) - Display name.
-- permissions: (array[Permission]) - Permissions attached to this role.
+- permissions: (array[number]) - An array of permission ids to be attached.
 - description: (string) - Description.
-
 
 ##Role Compact (object)
 - id: (number) - Internal id.
 - Include Role Fillable
+- permissions: (array[Permission]) - Permissions attached to this role.
 - organization_id: (number) - The id of the organization who owns this role (null if system role).
 
 ##Role Public (object)
