@@ -1238,10 +1238,10 @@ List or search signatures received for a petition.
 - updated_at: `2015-01-07T14:03:43Z` (string) - ISO8601 date and time of when this object was last updated.
 
 ##Role Fillable (object)
-- name: (string, required) - Name.
-- title: (string, required) - Display name.
-- permissions: (array[number]) - An array of permission ids to be attached.
-- description: (string) - Description.
+- name: `staff` (string, required) - Name.
+- title: `Staff` (string, required) - Display name.
+- permissions: `[1,2]` (array[number]) - An array of permission ids to be attached.
+- description: `Role for staff` (string) - Description.
 
 ##Role Compact (object)
 - id: (number) - Internal id.
@@ -1262,4 +1262,4 @@ List or search signatures received for a petition.
 - id: `2` (number) - Internal id.
 - name: `petitions.create` (string) - Name.
 - title: `Create petition` (string) - Descriptive title.
-- description: `Allows the creation of petitions in an organization.
+- description: `Allows the creation of petitions in an organization.` (string) - Description
