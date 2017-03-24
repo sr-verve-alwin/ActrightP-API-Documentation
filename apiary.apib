@@ -1106,7 +1106,9 @@ List or search signatures received for a petition.
 + Response 201 (application/json)
     + Attributes (Signature)
 
-### Delete a signature [POST /signatures/{signature_id}]
+### Delete a signature [DELETE /signatures/{signature_id}]
++ Parameters
+    + signature_id: `22` (number, required) - The id of the signature to delete.
 
 + Response 401 (text/html)
 
