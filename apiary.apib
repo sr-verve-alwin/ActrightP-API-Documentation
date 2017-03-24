@@ -1092,7 +1092,7 @@ List or search signatures received for a petition.
 
 #Group Signature
 
-## Create [/signatures]
+## Create/delete [/signatures]
 
 ### Create a signature [POST]
 
@@ -1105,6 +1105,31 @@ List or search signatures received for a petition.
         
 + Response 201 (application/json)
     + Attributes (Signature)
+
+### Delete a signature [POST /signatures/{signature_id}]
+
++ Response 401 (text/html)
+
+    Unauthorized.
+
++ Response 403 (application/json)
+
+        {
+            "message": "Access Denied."
+        }
+    
++ Response 404 (application/json)
+
+        {
+            "message": "Record not found"
+        }
+    
++ Response 203 (application/json)
+
+        {
+            "message": "Signature deleted"
+        }
+    
         
 # Data Structures
 
