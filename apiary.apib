@@ -704,7 +704,7 @@ Petitions API allows users to create and sign petitions.
         - message: `Roles set` (string) - Success message form server.
         - data: (array[Role]) - Present roles.
 
-### Delete a member[DELETE]
+### Delete a member [DELETE]
 
 + Response 401 (text/html)
 
@@ -903,7 +903,7 @@ Petitions API allows users to create and sign petitions.
         - to: `40` (number) - Last record's number,
         - data (array[Petition]) - Array of target objects
 
-### List/search media[GET /organizations/{organization_id}/media{?filter,per_page,page}]
+### List/search media [GET /organizations/{organization_id}/media{?filter,per_page,page}]
 + Parameters
     + filter: `john` (string) - Filter to search against media title.
         - Default ``
@@ -935,7 +935,7 @@ Petitions API allows users to create and sign petitions.
         - to: `40` (number) - Last record's number,
         - data (array[Media]) - Array of user objects
 
-### Upload media[POST /organizations/{organization_id}/media]
+### Upload media [POST /organizations/{organization_id}/media]
 + Attributes (Media Fillable)
 
 + Response 401 (text/html)
