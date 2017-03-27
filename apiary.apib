@@ -670,6 +670,56 @@ Petitions API allows users to create and sign petitions.
         
 + Response 203 (application/json)
 
+
+### List/search media[GET /organizations/{organization_id}/media{?filter,per_page,page}]
++ Parameters
+    + filter: `john` (string) - Filter to search against media title.
+        - Default ``
+    + per_page: `20` (number) - Number of items per page.
+        - Default `20`
+    + page: `1` (number) - Number of items per page.
+        - Default `1`
+
++ Response 401 (text/html)
+
+        Unauthorized.
+        
++ Response 404 (application/json)
+
+        {
+            "message": "Record not found."
+        }
+        
++ Response 403
++ Response 200 (application/json)
+    + Attributes
+        - total: `200` (number) - Total number of records,
+        - per_page: `20` (number) - Number of records per request,
+        - current_page: `2` (number) - Current page number,
+        - last_page: `10` (number) - Last page number,
+        - next_page_url: `` (string) - Resource URL to access next page,
+        - prev_page_url: `` (string) - Resource URL to access previous page,
+        - from: `21` (number) - First record's number,
+        - to: `40` (number) - Last record's number,
+        - data (array[Media]) - Array of user objects
+
+### Upload media[POST /organizations/{organization_id}/media]
++ Attributes (Media Fillable)
+
++ Response 401 (text/html)
+
+        Unauthorized.
+        
++ Response 404 (application/json)
+
+        {
+            "message": "Record not found."
+        }
+        
++ Response 403
++ Response 201 (application/json)
+    + Attributes (Media)
+
 ## Manage Organizational Roles [/organizations/{organization_id}/roles]
 
 + Parameters
@@ -1295,3 +1345,19 @@ List or search signatures received for a petition.
 - name: `petitions.create` (string) - Name.
 - title: `Create petition` (string) - Descriptive title.
 - description: `Allows the creation of petitions in an organization.` (string) - Description
+
+##Media Fillable (object)
+- title: `An image` (string) - The title.
+- data: `bs6721nb223e7s7s` (string) - Encoded file data.
+- type: `image/jpeg` (string) - Content type.
+
+
+##Media (object)
+- id: `2` (number) - Internal id.
+- title: `An image` (string) - The title.
+- type: `image/jpeg` (string) - Content type.
+- url: `http://example.com/image.jpg` (string) - Url to the resource.
+- owner_user_id: `2` (number) - Id of the user who created this resource.
+- owner_organization_id (number) - Id of the organziation who owns this resource.
+- created_at: `2015-01-07T14:03:43Z` (string) - ISO8601 date and time of when this object was created.
+- updated_at: `2015-01-07T14:03:43Z` (string) - ISO8601 date and time of when this object was last updated.
