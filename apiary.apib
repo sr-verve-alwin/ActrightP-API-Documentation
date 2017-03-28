@@ -467,7 +467,10 @@ Petitions API allows users to create and sign petitions.
         }
         
 + Response 403 (application/json)
-    + Attributes (Organization Fillable)
+
+        {
+                "message": "Access denied."
+        }
     
 + Response 200 (application/json)
     + Attributes (Organization)
