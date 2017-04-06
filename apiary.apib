@@ -248,6 +248,7 @@ Petitions API allows users to create and sign petitions.
 
 + Parameters
     + filter: (string, optional) - Search string.
+        - Default: `te`
     + per_page: `20` (number, optional) - Number of records to show per request.
         - Default: `20`
     + page: `1` (number, optional) - Current page number.
@@ -273,6 +274,7 @@ Petitions API allows users to create and sign petitions.
 
 + Parameters
     + filter: (string, optional) - Search string.
+        - Default: `te`
     + per_page: `20` (number, optional) - Number of records to show per request.
         - Default: `20`
     + page: `1` (number, optional) - Current page number.
@@ -298,6 +300,7 @@ Petitions API allows users to create and sign petitions.
 
 + Parameters
     + filter: (string, optional) - Search string.
+        - Default: `te`
     + per_page: `20` (number, optional) - Number of records to show per request.
         - Default: `20`
     + page: `1` (number, optional) - Current page number.
@@ -323,6 +326,7 @@ Petitions API allows users to create and sign petitions.
 
 + Parameters
     + filter: (string, optional) - Search string.
+        - Default: `te`
     + per_page: `20` (number, optional) - Number of records to show per request.
         - Default: `20`
     + page: `1` (number, optional) - Current page number.
@@ -347,7 +351,6 @@ Petitions API allows users to create and sign petitions.
 ### List/search media [GET /organizations/{organization_id}/media{?filter,per_page,page}]
 + Parameters
     + filter: `john` (string) - Filter to search against media title.
-        - Default ``
     + per_page: `20` (number) - Number of items per page.
         - Default `20`
     + page: `1` (number) - Number of items per page.
@@ -425,6 +428,7 @@ Petitions API allows users to create and sign petitions.
 ### Search Organizations [GET /organizations/search{?filter,per_page,page}]
 + Parameters
     + filter: (string, required) - Search string.
+        - Default: `te`
     + per_page: `20` (number, optional) - Number of records to show per request.
         - Default: `20`
     + page: `1` (number, optional) - Current page number.
@@ -524,7 +528,7 @@ Petitions API allows users to create and sign petitions.
 ### List/search created petitions [GET /organizations/{id}/petitions{?filter,per_page,page}]
 + Parameters
     + id: `1` (number, required) - Id of an organization.
-    + filter: `` (string) - Filter string.
+    + filter: `te` (string) - Filter string.
     + per_page: `20` (number) - Number of items per page.
         - Default `20`
     + page: `1` (number) - Number of items per page.
@@ -556,7 +560,7 @@ Petitions API allows users to create and sign petitions.
 ### List/search created targets [GET /organizations/{id}/targets{?filter,per_page,page}]
 + Parameters
     + id: `1` (number, required) - Id of an organization.
-    + filter: `` (string) - Filter string.
+    + filter: `te` (string) - Filter string.
     + per_page: `20` (number) - Number of items per page.
         - Default `20`
     + page: `1` (number) - Number of items per page.
