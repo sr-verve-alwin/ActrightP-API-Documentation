@@ -5,6 +5,51 @@ HOST: http://polls.apiblueprint.org/
 
 Petitions API allows users to create and sign petitions.
 
+# Group Clients/Token generation
+
+## Authenitcate
+
+### Using Username and Password [POST /oauth/token]
+
++ Attributes
+    + grant_type: `password` (string, required) - Grant type
+    + client_id: `2` (number, required) - Client id
+    + client_secret: `PyCn2w5WuVSHGqkLQ1F7RXOqgOLJaOJ2qNPUiTpN` (string, required) - Client secret
+    + username: `Jg4m9SJgp5@gmail.com` (string, required) - username of the user trying to access
+    + password: `secret88` (string, required) - Password of the user trying to access
+    
++ Response 400 (application/json)
+
+        {
+            "error": "unsupported_grant_type",
+            "message": "The authorization grant type is not supported by the authorization server.",
+            "hint": "Check the `grant_type` parameter"
+        }
+        
++ Responose 400 (application/json)
+
+        {
+            "error": "invalid_request",
+            "message": "The request is missing a required parameter, includes an invalid parameter value, includes a parameter more than once, or is otherwise malformed.",
+            "hint": "Check the `username` parameter"
+        }
+        
++ Response 401 (application/json)
+
+        {
+            "error": "invalid_client",
+            "message": "Client authentication failed"
+        }
+        
++ Response 200 (application/json)
+
+        {
+            "token_type": "Bearer",
+            "expires_in": 31536000,
+            "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImY1NGFkNWUyNWFhZWJiODAxNzU4NmNkNzc5OTc0OTkwMjBjNjhjNGQ0YmU3NzdmMDVhMzlmZTc1ZTk4OTdlNDQ0MDI1ODc1ZGFhYTc1ZDBlIn0.eyJhdWQiOiIyIiwianRpIjoiZjU0YWQ1ZTI1YWFlYmI4MDE3NTg2Y2Q3Nzk5NzQ5OTAyMGM2OGM0ZDRiZTc3N2YwNWEzOWZlNzVlOTg5N2U0NDQwMjU4NzVkYWFhNzVkMGUiLCJpYXQiOjE0OTE0NDE1NDEsIm5iZiI6MTQ5MTQ0MTU0MSwiZXhwIjoxNTIyOTc3NTQxLCJzdWIiOiI0Iiwic2NvcGVzIjpbXX0.GOx-VfmDlUDb3wtXCY3F4hTpPo0ydBDeyYrrbHJVmUiUlgoc2DtQIA-BJH_xJMwURRTeRWZ0RjvpLBk7paRikqyc1pWu3U_1WNBE-i1l5s6fwZ8IKt8pnO0aR7p1rurgpbvt-ngTpMTckVt2SaTmsh-PSUG_TWZey2E7y6L_PjPsgvfcbP0FBhXu7NMfo3f5lK-o4tWNWSnxRbN6VZFMfE4QuzhVTap40jpe1PAJ9WnRNloyp3tjGXYKZP47E93zhw0Be5a1E-DmVk45RvIepenCmc2RPh80jOuHu8AbO3TA1MpfglUfNrsvbNiNgoG3kdpFEDz5__ah3bS6_Rv767K_XBJTLrnYsljGwBlRLnOHcFmCp2ct3qJeJDhPnKeW8vOmRhywhvrBS-wVKkVvpvUeS0O-LckoYnBjiMbZSxHr9EQz6npfqFxGD6bMYR8T5b_VVTRvtilASqDE6tr_vJ2auM8646hTElfimDnNB2KdQGVAHaqpY13jjVc8sCcoiSOF-BayOY60b1UXlAPYfTsaLBSx6ESAzsqQcK5VTUHS-55JJztFa6rmEcYDgu2w4lSxLGbYI22woBxS7HXfzogj9Z85nsaBJ8NHVKFq6pIsqs4py6d62wD_1x0ULBozhN5oh0P28t--OfUtfXSpGd7G0tAuZRXmuJV5XY2jNGs",
+            "refresh_token": "M/zco7OajGHV5dwECGacT6su2Ohz6QthuNNhDdaTs4cYm9UClI9qATJovXcV2jxxfqJrtsqxbCMZ7GBo+FpUnE+asUQcnNSNXZ8+WANMGtVvVvyJvwpirvo3l3/BfjHI97EE/sUd7Kj/+2SP7NsdwA3Thk8PRHy74AeK7nR+gGT/QDUxS9JhuWNTyGWjaLGDGpAnM0mIo43n9l3P/Itn08YkmXyN6IgElpDKJUwXtqC1XI9ENzFEFW3HC2+tM+Hz83zR2Tvk4wyRP0lDqtFhLF1b6lBPootiECzwbBDV21YQxGJS/FCrNF2xZsesUTwn3rEwnSFtlAHf2RuB+c5hZdAU9F2GKzHN3TJ7X8cLHsKL7eqz/gIZ8iDkho0YETQTiYauD5MZuwH8VXlKtZU5IgHc4kd3a5AWnEdQ6DVr+iXG75TKdK3gWWEmaV2RdnSNmtCBuFuqPPEcaJEA9Gik30T+fWEA8yKH+xC+2Dk7Em6YZuzHifv4f8CTW/lb4NCvomPpXrCN0aOughWpDIptKOb6hll5GtbgbgSC5raDMIK8f/Bx4bkh3gkYF94AG38omwN+hs4a9z1/SLrk9iELnoKINszFuB5UemoiQvZMYaeinzMOeb2TASkkfy8Tb1Z28fGGoeyHE5dp+61BjD/VQBwWuDAWPco13rmZhHpibDA="
+        }
+
 # Group User
 
 ## Manage users [/users]
