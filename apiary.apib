@@ -1091,7 +1091,7 @@ Petitions API allows users to create and sign petitions.
     + Attributes
         + message: `Petition deleted` (string) - Message from server.
 
-## Signatures [/petition/{id}/signatures{?per_page,page,start_date,end_date}]
+## Signatures [/petitions/{id}/signatures{?per_page,page,start_date,end_date}]
 
 + Parameters
     + per_page: `20` (number, optional) - How many records to fetch
@@ -1119,7 +1119,7 @@ List or search signatures received for a petition.
         - to: `40` (number) - Last record's number,
         - data (array[Signature]) - Array of target objects
 
-## Targets [/petition/{id}/targets]
+## Targets [/petitions/{id}/targets]
 
 ### List petition targets [GET]
 
