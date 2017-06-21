@@ -26,7 +26,7 @@ Petitions API allows users to create and sign petitions.
             "hint": "Check the `grant_type` parameter"
         }
         
-+ Responose 400 (application/json)
++ Response 400 (application/json)
 
         {
             "error": "invalid_request",
@@ -56,11 +56,18 @@ Petitions API allows users to create and sign petitions.
 
 ### List All Users [GET /users{?per_page,page}]
 
++ Scopes: *
+    
 + Parameters
     + per_page (number, optional) - Number of records to show per request.
         - Default: `20`
     + page (number, optional) - Current page number.
         - Default: `1`
+        
++ Request
+    + Headers
+
+            Authentication: Bearer JWT
         
 + Response 401 (text/html; charset=UTF-8)
 
@@ -79,13 +86,20 @@ Petitions API allows users to create and sign petitions.
 
 ### Search Users [GET /users/search{?filter,per_page,page}]
 
++ Scopes: *
+
 + Parameters
     + filter (string, required) - Search string.
-        - Default: `test`
     + per_page (number, optional) - Number of records to show per request.
         - Default: `20`
     + page (number, optional) - Current page number.
         - Default: `1`
+
++ Request
+    + Headers
+
+            Authentication: Bearer JWT
+
 
 + Response 401 (text/html)
 
@@ -105,6 +119,8 @@ Petitions API allows users to create and sign petitions.
 
 ### Create a New User [POST]
 
++ Scopes: none
+
 + Request (application/json)
     + Attributes
         - email: (string, required) - Email id.
@@ -113,6 +129,10 @@ Petitions API allows users to create and sign petitions.
         - password: (string, required) - Password.
         - password_confirmation: (string, required) - Password confirmation.
 
+    + Headers
+
+            Authentication: Bearer JWT
+            
 + Response 422 (application/json)
 
         {
@@ -138,7 +158,10 @@ Petitions API allows users to create and sign petitions.
         - password: `pass1234` (string, required) - Password.
         - password_confirmation: `pass1234` (string, required) - Password confirmation.
 
+    + Headers
 
+            Authentication: Bearer JWT
+            
 + Response 201 (application/json)
 
     + Attributes (User Public)
@@ -150,6 +173,8 @@ Petitions API allows users to create and sign petitions.
     + id: `1` (number, required) - Id of a user.
 
 ### Show details [GET]
+
++ Scopes: *
 
 + Response 401 (text/html)
 
@@ -168,6 +193,8 @@ Petitions API allows users to create and sign petitions.
 
 ### Show details [GET]
 
++ Scopes: *
+
 + Response 401 (text/html)
 
         Unauthorized.
@@ -176,6 +203,8 @@ Petitions API allows users to create and sign petitions.
     + Attributes (User)
 
 ### Update details [PUT]
+
++ Scopes: *
 
 + Request (application/json)
     + Attributes (User Fillable)
@@ -188,6 +217,8 @@ Petitions API allows users to create and sign petitions.
     + Attributes (User)
 
 ### Update password [PUT /users/me/password]
+
++ Scopes: *
 
 + Request (application/json)
     + Attributes
@@ -229,6 +260,8 @@ Petitions API allows users to create and sign petitions.
 
 ### List/search created organizations [GET /users/me/organizations{?filter,per_page,page}]
 
++ Scopes: *
+
 + Parameters
     + filter: (string, optional) - Search string.
     + per_page: `20` (number, optional) - Number of records to show per request.
@@ -253,6 +286,8 @@ Petitions API allows users to create and sign petitions.
         - data (array[Organization Public]) - Array of organization objects
 
 ### List/search memberships [GET /users/me/memberships{?filter,per_page,page}]
+
++ Scopes: *
 
 + Parameters
     + filter: (string, optional) - Search string.
@@ -280,6 +315,8 @@ Petitions API allows users to create and sign petitions.
 
 ### List/Search Accessbile Targets [GET /users/me/accessible-targets{?filter,per_page,page}]
 
++ Scopes: *
+
 + Parameters
     + filter: (string, optional) - Search string.
         - Default: `te`
@@ -305,6 +342,8 @@ Petitions API allows users to create and sign petitions.
         - data (array[Target]) - Array of target objects
 
 ### List/Search Created Targets [GET /users/me/targets{?filter,per_page,page}]
+
++ Scopes: manage-targets
 
 + Parameters
     + filter: (string, optional) - Search string.
@@ -332,6 +371,8 @@ Petitions API allows users to create and sign petitions.
 
 ### List/Search Created Petitions [GET /users/me/petitions{?filter,per_page,page}]
 
++ Scopes: manage-petitions
+
 + Parameters
     + filter: (string, optional) - Search string.
         - Default: `te`
@@ -357,6 +398,9 @@ Petitions API allows users to create and sign petitions.
         - data (array[Petition Public]) - Array of target objects
 
 ### List/search media [GET /organizations/{organization_id}/media{?filter,per_page,page}]
+
++ Scopes: *
+
 + Parameters
     + filter: `john` (string) - Filter to search against media title.
     + per_page: `20` (number) - Number of items per page.
@@ -388,6 +432,9 @@ Petitions API allows users to create and sign petitions.
         - data (array[Media]) - Array of user objects
 
 ### Upload media [POST /organizations/{organization_id}/media]
+
++ Scopes: *
+
 + Request (multipart/form-data)
     + Attributes (Media Fillable)
 
@@ -410,6 +457,8 @@ Petitions API allows users to create and sign petitions.
 ## List/Search/Create organizations [/organizations]
 
 ### List all organizations [GET /organizations{?per_page,page}]
+
++ Scopes: *
 
 + Parameters
     + per_page (number, optional) - Number of records to show per request.
@@ -434,6 +483,9 @@ Petitions API allows users to create and sign petitions.
         - data (array[Organization Public]) - Array of user objects
 
 ### Search Organizations [GET /organizations/search{?filter,per_page,page}]
+
++ Scopes: *
+
 + Parameters
     + filter: (string, required) - Search string.
         - Default: `te`
@@ -459,6 +511,8 @@ Petitions API allows users to create and sign petitions.
         - data (array[Organization Public]) - Array of user objects
 
 ### Create organization [POST]
+
++ Scopes: *
 
 + Request (application/json)
     + Attributes (Organization Fillable)
@@ -486,6 +540,9 @@ Petitions API allows users to create and sign petitions.
     + id: `1` (number, required) - Id of an organization.
 
 ### Get details [GET]
+
++ Scopes: *
+
 + Response 401 (text/html)
 
         Unauthorized.
@@ -501,6 +558,9 @@ Petitions API allows users to create and sign petitions.
     + Attributes (Organization Public)
 
 ### Update details [PUT]
+
++ Scopes: *
+
 + Request (application/json)
     + Attributes (Organization Fillable)
 + Response 401 (text/html)
@@ -534,6 +594,9 @@ Petitions API allows users to create and sign petitions.
     + Attributes (Organization)
 
 ### List/search created petitions [GET /organizations/{id}/petitions{?filter,per_page,page}]
+
++ Scopes: manage-petitions
+
 + Parameters
     + id: `1` (number, required) - Id of an organization.
     + filter: `te` (string) - Filter string.
@@ -566,6 +629,9 @@ Petitions API allows users to create and sign petitions.
         - data (array[Petition Public]) - Array of petition objects
 
 ### List/search created targets [GET /organizations/{id}/targets{?filter,per_page,page}]
+
++ Scopes: manage-targets
+
 + Parameters
     + id: `1` (number, required) - Id of an organization.
     + filter: `te` (string) - Filter string.
@@ -604,6 +670,8 @@ Petitions API allows users to create and sign petitions.
 
 ### List/Search Members [GET /organizations/{id}/members{?filter,per_page,page}]
 
++ Scopes: *
+
 + Parameters
     + filter: `john` (string) - Filter to search against member email.
         - Default ``
@@ -637,6 +705,8 @@ Petitions API allows users to create and sign petitions.
 
 ### Add a member [POST /organizations/{id}/members]
 
++ Scopes: *
+
 + Request (application/json)
     + Attributes
         + user (enum,required) - User id or email.
@@ -669,6 +739,8 @@ Petitions API allows users to create and sign petitions.
 
 ### View details of a member [GET]
 
++ Scopes: *
+
 + Response 401 (text/html)
 
         Unauthorized.
@@ -690,6 +762,8 @@ Petitions API allows users to create and sign petitions.
 
 ### List assigned roles [GET /organizations/{organization_id}/members/{user_id}/roles]
 
++ Scopes: *
+
 + Response 401 (text/html)
 
         Unauthorized.
@@ -706,6 +780,8 @@ Petitions API allows users to create and sign petitions.
         - data: (array[Role]) - Roles assigned
 
 ### Assign role(s) [POST /organizations/{organization_id}/members/{user_id}/roles]
+
++ Scopes: *
 
 + Request (application/json)
     + Attributes
@@ -727,6 +803,9 @@ Petitions API allows users to create and sign petitions.
         - data: (array[Role]) - Roles that were assigned.
 
 ### Remove role(s) [DELETE /organizations/{organization_id}/members/{user_id}/roles]
+
++ Scopes: *
+
 + Request (application/json)
     + Attributes
         - roles: [1, 2] (array[number]) - An array of one or more role ids to be removed.
@@ -747,6 +826,9 @@ Petitions API allows users to create and sign petitions.
         - data: (array[Role]) - Roles that were removed.
 
 ### Set roles(s) [PUT /organizations/{organization_id}/members/{user_id}/roles]
+
++ Scopes: *
+
 + Request (application/json)
     + Attributes
         - roles: [1, 2] (array[number]) - An array of one or more role ids to be set.
@@ -768,6 +850,8 @@ Petitions API allows users to create and sign petitions.
 
 ### Delete a member [DELETE]
 
++ Scopes: *
+
 + Response 401 (text/html)
 
         Unauthorized.
@@ -787,6 +871,8 @@ Petitions API allows users to create and sign petitions.
 
 ### List all roles [GET /organizations/{organization_id}/all-roles]
 
++ Scopes: *
+
 + Response 401 (text/html)
 
         Unauthorized.
@@ -803,6 +889,8 @@ Petitions API allows users to create and sign petitions.
         - data (array[Role]) - Array of roles
 
 ### List own roles [GET /organizations/{organization_id}/own-roles]
+
++ Scopes: *
 
 + Response 401 (text/html)
 
@@ -821,6 +909,8 @@ Petitions API allows users to create and sign petitions.
 
 ### Create a role [POST]
 
++ Scopes: *
+
 + Request (application/json)
     + Attributes (Role Fillable)
 
@@ -838,6 +928,9 @@ Petitions API allows users to create and sign petitions.
     + Attributes (Role)
 
 ### Update a role [PUT /organizations/{organization_id}/roles/{role_id}]
+
++ Scopes: *
+
 + Parameters
     + role_id: `2` (number, required) - Id of the role
         
@@ -868,6 +961,9 @@ Petitions API allows users to create and sign petitions.
     + Attributes (Role)
 
 ### Delete a role [DELETE /organizations/{organization_id}/roles/{role_id}]
+
++ Scopes: *
+
 + Parameters
     + role_id: `2` (number, required) - Id of the role
         
@@ -900,6 +996,8 @@ Petitions API allows users to create and sign petitions.
     + id: `1` (number, required) - Id of an organization.
 
 ### List/Search Targets [GET /organizations/{id}/targets{?filter,per_page,page}]
+
++ Scopes: manage-targets
 
 + Parameters
     + filter: `john` (string, optional) - Filter to search against name.
@@ -934,6 +1032,8 @@ Petitions API allows users to create and sign petitions.
 
 ### List/Search Petitions [GET /organizations/{id}/petitions{?filter,per_page,page}]
 
++ Scopes: manage-petitions
+
 + Parameters
     + filter: `john` (string, optional) - Filter to search against name.
         - Default ``
@@ -966,6 +1066,9 @@ Petitions API allows users to create and sign petitions.
         - data (array[Petition]) - Array of target objects
 
 ### List/search media [GET /organizations/{organization_id}/media{?filter,per_page,page}]
+
++ Scopes: *
+
 + Parameters
     + filter: `john` (string) - Filter to search against media title.
         - Default ``
@@ -999,6 +1102,8 @@ Petitions API allows users to create and sign petitions.
 
 ### Upload media [POST /organizations/{organization_id}/media]
 
++ Scopes: *
+
 + Request (multipart/form-data)
     + Attributes (Media Fillable)
 
@@ -1021,6 +1126,9 @@ Petitions API allows users to create and sign petitions.
 ## Create  [/petitions]
 
 ### Create a new petition [POST]
+
++ Scopes: manage-petitions
+
 + Request (application/json)
     + Attributes (Petition Fillable)
 
@@ -1039,6 +1147,8 @@ Petitions API allows users to create and sign petitions.
 
 ### Show details of a petition [GET]
 
++ Scopes: manage-petitions
+
 + Response 401 (text/html)
 
         Unauthorized.
@@ -1054,6 +1164,8 @@ Petitions API allows users to create and sign petitions.
     + Attributes (Petition)
 
 ### Update a petition [PUT]
+
++ Scopes: manage-petitions
 
 + Request (application/json)
     + Attributes (Petition Fillable)
@@ -1073,6 +1185,8 @@ Petitions API allows users to create and sign petitions.
     + Attributes (Petition)
 
 ### Delete a petition [DELETE]
+
++ Scopes: manage-petitions
 
 + Response 401 (text/html)
 
@@ -1101,6 +1215,8 @@ Petitions API allows users to create and sign petitions.
 
 ### List/search signatures [GET]
 
++ Scopes: manage-petitions | view-signatures
+
 List or search signatures received for a petition.
 
 + Response 401 (text/html)
@@ -1122,6 +1238,8 @@ List or search signatures received for a petition.
 ## Targets [/petitions/{id}/targets]
 
 ### List petition targets [GET]
+
++ Scopes: manage-petitions
 
 + Response 401 (text/html)
 
@@ -1146,6 +1264,9 @@ List or search signatures received for a petition.
         - data (array[Target]) - Array of target objects
 
 ### Add targets(s) to petition [POST]
+
++ Scopes: manage-petitions
+
 + Request (application/json)
     + Attributes
         - targets: [2,3] (array[number], required) - Ids of targets to attach
@@ -1166,6 +1287,9 @@ List or search signatures received for a petition.
         - data: (array[Target]) - Array of targets that were attched
 
 ### Remove target(s) from petition [DELETE]
+
++ Scopes: manage-petitions
+
 + Request (application/json)
     + Attributes
         - targets: [2,3] (array[number], required) - Ids of targets to dettach.
@@ -1190,6 +1314,8 @@ List or search signatures received for a petition.
 
 ### Create a target [POST]
 
++ Scopes: manage-targets
+
 + Request (application/json)
     + Attributes (Target Fillable)
     
@@ -1202,6 +1328,8 @@ List or search signatures received for a petition.
 
 ### View Details of a target [GET /targets/{target_id}]
 
++ Scopes: manage-targets
+
 + Parameters
     + target_id: `1` (number) - The id of the target
 
@@ -1213,6 +1341,8 @@ List or search signatures received for a petition.
     + Attributes (Target)
 
 ### Update a target [PUT /targets/{target_id}]
+
++ Scopes: manage-targets
 
 + Parameters
     + target_id: `1` (number) - The id of the target
@@ -1233,6 +1363,8 @@ List or search signatures received for a petition.
     + Attributes (Target)
 
 ### Delete a target [DELETE /targets/{target_id}]
+
++ Scopes: manage-targets
 
 + Parameters
     + target_id: `1` (number) - The id of the target
@@ -1257,6 +1389,8 @@ List or search signatures received for a petition.
 
 ### Create a signature [POST]
 
++ Scopes: create-signatures
+
 + Request (application/json)
     + Attributes (Signature Fillable)
 
@@ -1268,6 +1402,9 @@ List or search signatures received for a petition.
     + Attributes (Signature)
 
 ### Delete a signature [DELETE /signatures/{signature_id}]
+
++ Scopes: *
+
 + Parameters
     + signature_id: `22` (number, required) - The id of the signature to delete.
 
@@ -1298,6 +1435,8 @@ List or search signatures received for a petition.
 ## List [/permissions]
 
 ### List all permissions [GET]
+
++ Scopes: *
 
 + Response 401 (text/html)
 
